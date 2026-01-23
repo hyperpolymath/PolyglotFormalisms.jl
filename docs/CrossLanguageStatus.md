@@ -8,7 +8,7 @@ This document tracks the implementation status of PolyglotFormalisms Common Libr
 |----------|-----------|---------|--------|-------|-------|
 | **Julia** | [PolyglotFormalisms.jl](https://github.com/hyperpolymath/PolyglotFormalisms.jl) | 0.2.0 | ✅ Complete | 198/198 | Reference implementation |
 | **ReScript** | [alib-for-rescript](https://github.com/hyperpolymath/alib-for-rescript) | 0.2.0 | ✅ Complete | Full coverage | packages/common/ |
-| **Gleam** | [polyglot_formalisms_gleam](https://github.com/hyperpolymath/polyglot_formalisms_gleam) | 0.2.0 | ✅ Complete | Pending | BEAM runtime |
+| **Gleam** | [polyglot_formalisms_gleam](https://github.com/hyperpolymath/polyglot_formalisms_gleam) | 0.2.0 | ✅ Complete | 92/92 | BEAM runtime, gleeunit tests |
 | **Elixir** | [polyglot_formalisms_elixir](https://github.com/hyperpolymath/polyglot_formalisms_elixir) | 0.2.0 | ✅ Complete | 156/156 | 63 doctests + 93 unit tests |
 
 ## Module Completion Status
@@ -62,12 +62,17 @@ This document tracks the implementation status of PolyglotFormalisms Common Libr
 
 ### Gleam
 - **File locations**: `src/arithmetic.gleam`, `src/comparison.gleam`, `src/logical.gleam`
-- **Test locations**: Pending (to be created)
-- **Operators**: Float operators (`+.`, `-.`, `*.`, `/.`, `<.`, `>.`, `==.`, `&&`, `||`, `!`)
+- **Test locations**: `test/arithmetic_test.gleam`, `test/comparison_test.gleam`, `test/logical_test.gleam`
+- **Operators**:
+  - Arithmetic: `+.`, `-.`, `*.`, `/.` (dot required for floats)
+  - Ordering: `<.`, `>.`, `<=.`, `>=.` (dot required for floats)
+  - Equality: `==`, `!=` (no dot, works for all types)
+  - Logical: `&&`, `||`, `!`
 - **Type system**: Separate `Float`, `Int`, and `Bool` types
 - **Runtime**: BEAM (Erlang VM) or JavaScript
 - **Modulo**: Integer operation using `%`
-- **Test framework**: Gleeunit (to be implemented)
+- **Test framework**: Gleeunit
+- **Total tests**: 92 (28 arithmetic + 35 comparison + 22 logical + 7 property tests)
 
 ### Elixir
 - **File locations**: `lib/arithmetic.ex`, `lib/comparison.ex`, `lib/logical.ex`
@@ -89,15 +94,17 @@ This document tracks the implementation status of PolyglotFormalisms Common Libr
 | Float multiplication | `*` | `*.` | `*.` | `*` |
 | Float division | `/` | `/.` | `/.` | `/` |
 | Integer modulo | `mod` | `mod` | `%` | `rem` |
-| Less than | `<` | `<` | `<.` | `<` |
-| Greater than | `>` | `>` | `>.` | `>` |
-| Equal | `==` | `==` | `==.` | `==` |
-| Not equal | `!=` | `!=` | `!=.` | `!=` |
-| Less or equal | `<=` | `<=` | `<=.` | `<=` |
-| Greater or equal | `>=` | `>=` | `>=.` | `>=` |
+| Less than (float) | `<` | `<` | `<.` | `<` |
+| Greater than (float) | `>` | `>` | `>.` | `>` |
+| Equal (any type) | `==` | `==` | `==` | `==` |
+| Not equal (any type) | `!=` | `!=` | `!=` | `!=` |
+| Less or equal (float) | `<=` | `<=` | `<=.` | `<=` |
+| Greater or equal (float) | `>=` | `>=` | `>=.` | `>=` |
 | Logical AND | `&&` | `&&` | `&&` | `and` |
 | Logical OR | `\|\|` | `\|\|` | `\|\|` | `or` |
 | Logical NOT | `!` | `!` | `!` | `not` |
+
+**Note:** Gleam uses dotted operators (`+.`, `<.`, etc.) only for arithmetic and float ordering comparisons, but not for equality (`==`, `!=`), which works for all types.
 
 ## Semantic Equivalence
 
