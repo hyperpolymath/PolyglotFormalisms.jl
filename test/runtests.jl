@@ -4,4 +4,6 @@ using PolyglotFormalisms
 
 @testset "PolyglotFormalisms.jl" begin
     include("arithmetic_tests.jl")
+    include("comparison_tests.jl")
+    include("logical_tests.jl")
 end

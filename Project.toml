@@ -1,6 +1,6 @@
 name = "PolyglotFormalisms"
 uuid = "8fd979ee-625c-447d-87f1-33af4d789de5"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["hyperpolymath <jonathan.jewell@gmail.com>"]
 
 [deps]

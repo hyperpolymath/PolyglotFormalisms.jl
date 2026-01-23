@@ -5,9 +5,37 @@
   (version "1.0")
   (project "PolyglotFormalisms.jl")
   (format "keep-a-changelog")
-  (updated "2025-01-23")
+  (updated "2026-01-23")
 
   ;; Current version
+  (release
+    (version . "0.2.0")
+    (date . "2026-01-23")
+    (status . "released")
+    (tag . "v0.2.0")
+
+    (added
+      "Comparison module with 6 operations (less_than, greater_than, equal, not_equal, less_equal, greater_equal)"
+      "Logical module with 3 operations (and, or, not)"
+      "98 conformance tests for Comparison module"
+      "41 conformance tests for Logical module"
+      "Mathematical properties documentation for all comparison operations"
+      "Boolean algebra properties documentation for all logical operations"
+      "Truth tables and edge case tests for logical operations"
+      "IEEE 754 edge case handling for NaN, Inf, and signed zeros")
+
+    (changed
+      "Total test count: 59 → 198 (139 new tests)")
+
+    (deprecated . ())
+
+    (removed . ())
+
+    (fixed . ())
+
+    (security . ()))
+
+  ;; Previous version
   (release
     (version . "0.1.0")
     (date . "2025-01-23")
@@ -59,13 +87,6 @@
 
   ;; Future versions (planned)
   (planned
-    ((version . "0.2.0")
-     (target-date . "2025-Q1")
-     (scope
-       "Comparison module (6 operations)"
-       "Logical module (3 operations)"
-       "Conformance tests for both modules"))
-
     ((version . "0.3.0")
      (target-date . "2025-Q1")
      (scope

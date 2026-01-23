@@ -54,8 +54,8 @@ module PolyglotFormalisms
 export Arithmetic, Comparison, Logical, String, Collection, Conditional
 
 include("arithmetic.jl")
-# include("comparison.jl")
-# include("logical.jl")
+include("comparison.jl")
+include("logical.jl")
 # include("string.jl")
 # include("collection.jl")
 # include("conditional.jl")
