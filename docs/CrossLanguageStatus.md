@@ -6,10 +6,10 @@ This document tracks the implementation status of PolyglotFormalisms Common Libr
 
 | Language | Repository | Version | Status | Tests | Notes |
 |----------|-----------|---------|--------|-------|-------|
-| **Julia** | [PolyglotFormalisms.jl](https://github.com/hyperpolymath/PolyglotFormalisms.jl) | 0.2.0 | ✅ Complete | 287/287 | Reference implementation |
-| **ReScript** | [alib-for-rescript](https://github.com/hyperpolymath/alib-for-rescript) | 0.2.0 | ✅ Complete | Full coverage | packages/common/ |
-| **Gleam** | [polyglot_formalisms_gleam](https://github.com/hyperpolymath/polyglot_formalisms_gleam) | 0.2.0 | ✅ Complete | 131/131 | BEAM runtime, gleeunit tests |
-| **Elixir** | [polyglot_formalisms_elixir](https://github.com/hyperpolymath/polyglot_formalisms_elixir) | 0.2.0 | ✅ Complete | 253/253 | 120 doctests + 133 unit tests |
+| **Julia** | [PolyglotFormalisms.jl](https://github.com/hyperpolymath/PolyglotFormalisms.jl) | 0.3.0 | ✅ Complete | 287/287 | Reference implementation |
+| **ReScript** | [alib-for-rescript](https://github.com/hyperpolymath/alib-for-rescript) | 0.3.0 | ✅ Complete | Full coverage | packages/common/ |
+| **Gleam** | [polyglot_formalisms_gleam](https://github.com/hyperpolymath/polyglot_formalisms_gleam) | 0.3.0 | ✅ Complete | 131/131 | BEAM runtime, gleeunit tests |
+| **Elixir** | [polyglot_formalisms_elixir](https://github.com/hyperpolymath/polyglot_formalisms_elixir) | 0.3.0 | ✅ Complete | 253/253 | 120 doctests + 133 unit tests |
 
 ## Module Completion Status
 
