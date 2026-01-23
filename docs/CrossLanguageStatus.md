@@ -6,10 +6,10 @@ This document tracks the implementation status of PolyglotFormalisms Common Libr
 
 | Language | Repository | Version | Status | Tests | Notes |
 |----------|-----------|---------|--------|-------|-------|
-| **Julia** | [PolyglotFormalisms.jl](https://github.com/hyperpolymath/PolyglotFormalisms.jl) | 0.2.0 | ✅ Complete | 198/198 | Reference implementation |
+| **Julia** | [PolyglotFormalisms.jl](https://github.com/hyperpolymath/PolyglotFormalisms.jl) | 0.2.0 | ✅ Complete | 287/287 | Reference implementation |
 | **ReScript** | [alib-for-rescript](https://github.com/hyperpolymath/alib-for-rescript) | 0.2.0 | ✅ Complete | Full coverage | packages/common/ |
-| **Gleam** | [polyglot_formalisms_gleam](https://github.com/hyperpolymath/polyglot_formalisms_gleam) | 0.2.0 | ✅ Complete | 92/92 | BEAM runtime, gleeunit tests |
-| **Elixir** | [polyglot_formalisms_elixir](https://github.com/hyperpolymath/polyglot_formalisms_elixir) | 0.2.0 | ✅ Complete | 156/156 | 63 doctests + 93 unit tests |
+| **Gleam** | [polyglot_formalisms_gleam](https://github.com/hyperpolymath/polyglot_formalisms_gleam) | 0.2.0 | ✅ Complete | 131/131 | BEAM runtime, gleeunit tests |
+| **Elixir** | [polyglot_formalisms_elixir](https://github.com/hyperpolymath/polyglot_formalisms_elixir) | 0.2.0 | ✅ Complete | 253/253 | 120 doctests + 133 unit tests |
 
 ## Module Completion Status
 
@@ -42,48 +42,77 @@ This document tracks the implementation status of PolyglotFormalisms Common Libr
 | `or` | ✅ | ✅ | ✅ | ✅ `logical_or` | Elixir renamed due to keyword conflict |
 | `not` | ✅ | ✅ | ✅ | ✅ `logical_not` | Elixir renamed due to keyword conflict |
 
+### String Module
+
+| Operation | Julia | ReScript | Gleam | Elixir | Notes |
+|-----------|-------|----------|-------|--------|-------|
+| `concat` | ✅ | ✅ | ✅ | ✅ | String concatenation |
+| `length` | ✅ | ✅ | ✅ | ✅ `string_length` | Elixir renamed to avoid stdlib conflict |
+| `substring` | ✅ | ✅ | ✅ | ✅ | Julia/Elixir: 1-based; ReScript/Gleam: 0-based |
+| `index_of` | ✅ | ✅ | ✅ | ✅ | Julia/Elixir: returns 0 when not found; ReScript/Gleam: returns -1 |
+| `contains` | ✅ | ✅ | ✅ | ✅ `string_contains` | Elixir renamed to avoid stdlib conflict |
+| `starts_with` | ✅ | ✅ | ✅ | ✅ | Prefix check |
+| `ends_with` | ✅ | ✅ | ✅ | ✅ | Suffix check |
+| `to_uppercase` | ✅ | ✅ | ✅ | ✅ | Unicode-aware |
+| `to_lowercase` | ✅ | ✅ | ✅ | ✅ | Unicode-aware |
+| `trim` | ✅ | ✅ | ✅ | ✅ `string_trim` | Elixir renamed to avoid stdlib conflict |
+| `split` | ✅ | ✅ | ✅ | ✅ `string_split` | Elixir renamed to avoid stdlib conflict |
+| `join` | ✅ | ✅ | ✅ | ✅ `string_join` | Elixir renamed to avoid stdlib conflict |
+| `replace` | ✅ | ✅ | ✅ | ✅ `string_replace` | Elixir renamed to avoid stdlib conflict |
+| `is_empty` | ✅ | ✅ | ✅ | ✅ | Boolean check |
+
 ## Language-Specific Implementation Notes
 
 ### Julia (Reference Implementation)
-- **File locations**: `src/arithmetic.jl`, `src/comparison.jl`, `src/logical.jl`
-- **Test locations**: `test/arithmetic_tests.jl`, `test/comparison_tests.jl`, `test/logical_tests.jl`
+- **File locations**: `src/arithmetic.jl`, `src/comparison.jl`, `src/logical.jl`, `src/string.jl`
+- **Test locations**: `test/arithmetic_tests.jl`, `test/comparison_tests.jl`, `test/logical_tests.jl`, `test/string_tests.jl`
 - **Operators**: Standard Julia operators (`+`, `-`, `*`, `/`, `mod`, `<`, `>`, `==`, `&&`, `||`, `!`)
-- **Type system**: Generic `Number` and `Bool` types
+- **Type system**: Generic `Number` and `Bool` types, `AbstractString` for strings
 - **Test framework**: Test.jl with `@testset` and `@test` macros
-- **Total tests**: 198 (59 arithmetic + 98 comparison + 41 logical)
+- **Total tests**: 287 (59 arithmetic + 98 comparison + 41 logical + 89 string)
+- **String indexing**: 1-based (Julia convention)
 
 ### ReScript
-- **File locations**: `packages/common/Arithmetic.res`, `packages/common/Comparison.res`, `packages/common/Logical.res`
-- **Test locations**: `tests/Arithmetic_test.res`, `tests/Comparison_test.res`, `tests/Logical_test.res`
+- **File locations**: `packages/common/Arithmetic.res`, `packages/common/Comparison.res`, `packages/common/Logical.res`, `packages/common/String.res`
+- **Test locations**: `tests/Arithmetic_test.res`, `tests/Comparison_test.res`, `tests/Logical_test.res`, `tests/String_test.res`
 - **Operators**: Float-specific operators (`+.`, `-.`, `*.`, `/.`, standard comparison, `&&`, `||`, `!`)
-- **Type system**: Explicit `float` and `bool` types
+- **Type system**: Explicit `float`, `bool`, and `string` types
 - **Test framework**: RescriptMocha
 - **Modulo**: Uses `mod_float` for float modulo operation
+- **String indexing**: 0-based (JavaScript/ReScript convention)
+- **String operators**: Uses `++` for concatenation, standard String module functions
 
 ### Gleam
-- **File locations**: `src/arithmetic.gleam`, `src/comparison.gleam`, `src/logical.gleam`
-- **Test locations**: `test/arithmetic_test.gleam`, `test/comparison_test.gleam`, `test/logical_test.gleam`
+- **File locations**: `src/arithmetic.gleam`, `src/comparison.gleam`, `src/logical.gleam`, `src/string_ops.gleam`
+- **Test locations**: `test/arithmetic_test.gleam`, `test/comparison_test.gleam`, `test/logical_test.gleam`, `test/string_ops_test.gleam`
 - **Operators**:
   - Arithmetic: `+.`, `-.`, `*.`, `/.` (dot required for floats)
   - Ordering: `<.`, `>.`, `<=.`, `>=.` (dot required for floats)
   - Equality: `==`, `!=` (no dot, works for all types)
   - Logical: `&&`, `||`, `!`
-- **Type system**: Separate `Float`, `Int`, and `Bool` types
+  - String: `<>` for concatenation
+- **Type system**: Separate `Float`, `Int`, `Bool`, and `String` types
 - **Runtime**: BEAM (Erlang VM) or JavaScript
 - **Modulo**: Integer operation using `%`
 - **Test framework**: Gleeunit
-- **Total tests**: 92 (28 arithmetic + 35 comparison + 22 logical + 7 property tests)
+- **Total tests**: 131 (28 arithmetic + 35 comparison + 22 logical + 7 property tests + 39 string)
+- **String indexing**: 0-based (Gleam convention)
+- **String graphemes**: Uses grapheme-aware length and splitting
 
 ### Elixir
-- **File locations**: `lib/arithmetic.ex`, `lib/comparison.ex`, `lib/logical.ex`
-- **Test locations**: `test/arithmetic_test.exs`, `test/comparison_test.exs`, `test/logical_test.exs`
-- **Operators**: Standard Elixir operators (automatically promoted to float for division)
+- **File locations**: `lib/arithmetic.ex`, `lib/comparison.ex`, `lib/logical.ex`, `lib/string_ops.ex`
+- **Test locations**: `test/arithmetic_test.exs`, `test/comparison_test.exs`, `test/logical_test.exs`, `test/string_ops_test.exs`
+- **Operators**: Standard Elixir operators (automatically promoted to float for division), `<>` for string concatenation
 - **Type system**: Dynamic with guards and `@spec` annotations
 - **Runtime**: BEAM (Erlang VM)
 - **Modulo**: Uses `rem` for remainder (Erlang semantics)
 - **Test framework**: ExUnit with doctests
-- **Total tests**: 156 (63 doctests + 93 unit tests)
-- **Naming exceptions**: `logical_and`, `logical_or`, `logical_not` (to avoid Kernel keyword conflicts)
+- **Total tests**: 253 (120 doctests + 133 unit tests)
+- **Naming exceptions**:
+  - Logical: `logical_and`, `logical_or`, `logical_not` (to avoid Kernel keyword conflicts)
+  - String: `string_length`, `string_contains`, `string_trim`, `string_split`, `string_join`, `string_replace` (to avoid stdlib conflicts)
+- **String indexing**: 1-based (matching Julia for cross-language consistency)
+- **String graphemes**: Uses grapheme-aware operations
 
 ## Operator Comparison Table
 
