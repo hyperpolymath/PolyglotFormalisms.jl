@@ -1,34 +1,34 @@
-# aLib.jl
+# PolyglotFormalisms.jl
 
-**Julia reference implementation of the aggregate-library (aLib) Common Library with formal verification.**
+**Julia reference implementation of the aggregate-library (PolyglotFormalisms) Common Library with formal verification.**
 
 [![License: PMPL-1.0](https://img.shields.io/badge/License-PMPL--1.0-blue.svg)](https://github.com/hyperpolymath/palimpsest-license)
 [![Tests: Passing](https://img.shields.io/badge/tests-59%20passing-brightgreen.svg)]()
 
 ## Overview
 
-aLib.jl provides formally verified implementations of the minimal overlap functions specified in the [aggregate-library](https://github.com/hyperpolymath/aggregate-library) project. This package serves as a Julia reference implementation for cross-language semantic equivalence verification.
+PolyglotFormalisms.jl provides formally verified implementations of the minimal overlap functions specified in the [aggregate-library](https://github.com/hyperpolymath/aggregate-library) project. This package serves as a Julia reference implementation for cross-language semantic equivalence verification.
 
-## Why aLib.jl?
+## Why PolyglotFormalisms.jl?
 
-The aggregate-library defines a minimal intersection of functionality across radically different programming languages. aLib.jl adds value by:
+The aggregate-library defines a minimal intersection of functionality across radically different programming languages. PolyglotFormalisms.jl adds value by:
 
 1. **Formal Verification**: Mathematical properties are proven using Axiom.jl's `@prove` macro (planned)
 2. **Reference Implementation**: Serves as a semantically verified baseline for other language implementations
-3. **Conformance Testing**: Test suite exactly matches aLib specifications
+3. **Conformance Testing**: Test suite exactly matches PolyglotFormalisms specifications
 4. **Cross-Language Bridge**: Enables verification that ReScript, Gleam, Elixir implementations satisfy the same properties
 
 ## Installation
 
 ```julia
 using Pkg
-Pkg.add("aLib")
+Pkg.add("PolyglotFormalisms")
 ```
 
 ## Usage
 
 ```julia
-using aLib
+using PolyglotFormalisms
 
 # Arithmetic operations
 Arithmetic.add(2, 3)         # 5
@@ -67,13 +67,13 @@ Each operation includes formally proven mathematical properties:
 
 ## Conformance Testing
 
-Test suite exactly matches the aLib specification test cases:
+Test suite exactly matches the PolyglotFormalisms specification test cases:
 
 ```julia
 using Test
-using aLib
+using PolyglotFormalisms
 
-@testset "aLib Conformance" begin
+@testset "PolyglotFormalisms Conformance" begin
     # Test cases from specs/arithmetic/add.md
     @test Arithmetic.add(2, 3) == 5
     @test Arithmetic.add(-5, 3) == -2
@@ -110,16 +110,16 @@ This enables:
 
 ## Cross-Language Verification
 
-aLib.jl serves as a formally verified reference for semantic equivalence checking:
+PolyglotFormalisms.jl serves as a formally verified reference for semantic equivalence checking:
 
 1. **Implement in target language** (ReScript, Gleam, Elixir)
-2. **Run aLib conformance tests** in both languages
+2. **Run PolyglotFormalisms conformance tests** in both languages
 3. **Use Axiom.jl + SMTLib.jl** to prove semantic equivalence
 4. **Generate verification certificate**
 
 Example verification workflow:
 ```julia
-using aLib
+using PolyglotFormalisms
 using Axiom
 using SMTLib
 
@@ -133,7 +133,7 @@ verify_equivalence(
 
 ## Design Philosophy
 
-This implementation follows the aLib specification philosophy:
+This implementation follows the PolyglotFormalisms specification philosophy:
 - **Minimal intersection**: Only functions that work across all target languages
 - **Clear semantics**: Unambiguous behavioral specifications
 - **Testable**: Executable test cases for every operation
@@ -142,7 +142,7 @@ This implementation follows the aLib specification philosophy:
 
 ## Related Projects
 
-- [aggregate-library](https://github.com/hyperpolymath/aggregate-library) - aLib specification
+- [aggregate-library](https://github.com/hyperpolymath/aggregate-library) - PolyglotFormalisms specification
 - [alib-for-rescript](https://github.com/hyperpolymath/alib-for-rescript) - ReScript implementation
 - [Axiom.jl](https://github.com/hyperpolymath/Axiom.jl) - Formal verification for ML models
 - [SMTLib.jl](https://github.com/hyperpolymath/SMTLib.jl) - SMT solver integration for Julia
@@ -150,8 +150,8 @@ This implementation follows the aLib specification philosophy:
 ## Contributing
 
 Contributions welcome! Please ensure:
-1. Implementations match aLib specifications exactly
-2. All test cases from aLib specs are included
+1. Implementations match PolyglotFormalisms specifications exactly
+2. All test cases from PolyglotFormalisms specs are included
 3. Properties are documented (and proven when Axiom.jl integration is complete)
 4. Tests pass: `julia --project=. -e 'using Pkg; Pkg.test()'`
 

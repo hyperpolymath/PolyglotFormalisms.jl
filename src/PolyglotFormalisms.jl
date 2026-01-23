@@ -1,15 +1,15 @@
 # SPDX-License-Identifier: PMPL-1.0-or-later
 """
-    aLib
+    PolyglotFormalisms
 
-Julia reference implementation of the aggregate-library (aLib) Common Library.
+Julia reference implementation of the aggregate-library (PolyglotFormalisms) Common Library.
 
 This package provides formally verified implementations of the minimal overlap
-functions specified in the aLib project. Each function includes:
+functions specified in the PolyglotFormalisms project. Each function includes:
 
-1. Implementation following the aLib specification
+1. Implementation following the PolyglotFormalisms specification
 2. Formal proofs of mathematical properties using Axiom.jl's @prove macro
-3. Test cases matching the aLib conformance suite
+3. Test cases matching the PolyglotFormalisms conformance suite
 
 The goal is to demonstrate cross-language verification and serve as a reference
 for semantic equivalence checking across ReScript, Julia, Gleam, Elixir, and
@@ -27,7 +27,7 @@ other hyperpolymath ecosystem languages.
 # Example
 
 ```julia
-using aLib
+using PolyglotFormalisms
 
 # All operations include formal proofs
 result = Arithmetic.add(2, 3)  # Returns 5
@@ -40,7 +40,7 @@ result = Arithmetic.add(2, 3)  # Returns 5
 
 # Design Philosophy
 
-This implementation follows the aLib specification format:
+This implementation follows the PolyglotFormalisms specification format:
 - Minimal intersection across 7+ radically different languages
 - Clear behavioral semantics
 - Executable test cases
@@ -49,7 +49,7 @@ This implementation follows the aLib specification format:
 For full specification details, see:
 https://github.com/hyperpolymath/aggregate-library
 """
-module aLib
+module PolyglotFormalisms
 
 export Arithmetic, Comparison, Logical, String, Collection, Conditional
 
@@ -60,4 +60,4 @@ include("arithmetic.jl")
 # include("collection.jl")
 # include("conditional.jl")
 
-end # module aLib
+end # module PolyglotFormalisms

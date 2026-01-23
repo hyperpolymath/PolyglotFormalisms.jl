@@ -1,11 +1,11 @@
 # SPDX-License-Identifier: PMPL-1.0-or-later
 """
-Arithmetic conformance tests matching aLib specification.
+Arithmetic conformance tests matching CommonLib specification.
 
 These tests correspond exactly to the test cases defined in:
 - aggregate-library/specs/arithmetic/*.md
 
-Each test case matches the aLib format:
+Each test case matches the CommonLib format:
 - input: [a, b]
 - output: expected_result
 - description: "Test case description"
@@ -117,7 +117,7 @@ Each test case matches the aLib format:
 
         @testset "Division by zero" begin
             # In Julia, floating-point division by zero returns Inf (IEEE 754)
-            # This is implementation-specific behavior per aLib spec
+            # This is implementation-specific behavior per CommonLib spec
             @test isinf(Arithmetic.divide(5, 0))
             @test isinf(Arithmetic.divide(5.0, 0.0))
             @test Arithmetic.divide(5, 0) == Inf
