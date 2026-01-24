@@ -6,4 +6,5 @@ using PolyglotFormalisms
     include("arithmetic_tests.jl")
     include("comparison_tests.jl")
     include("logical_tests.jl")
+    include("string_tests.jl")
 end

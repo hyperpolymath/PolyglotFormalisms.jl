@@ -20,7 +20,7 @@ other hyperpolymath ecosystem languages.
 - `Arithmetic`: Basic arithmetic operations (add, subtract, multiply, divide, modulo)
 - `Comparison`: Comparison operations (less_than, greater_than, equal, etc.)
 - `Logical`: Boolean logic (and, or, not)
-- `String`: String operations (concat, length, substring)
+- `StringOps`: String operations (concat, length, substring, split, join, etc.)
 - `Collection`: Collection operations (map, filter, fold, contains)
 - `Conditional`: Conditional operations (if_then_else)
 
@@ -51,12 +51,12 @@ https://github.com/hyperpolymath/aggregate-library
 """
 module PolyglotFormalisms
 
-export Arithmetic, Comparison, Logical, String, Collection, Conditional
+export Arithmetic, Comparison, Logical, StringOps, Collection, Conditional
 
 include("arithmetic.jl")
 include("comparison.jl")
 include("logical.jl")
-# include("string.jl")
+include("string.jl")
 # include("collection.jl")
 # include("conditional.jl")
 
