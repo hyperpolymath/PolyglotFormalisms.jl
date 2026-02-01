@@ -2,7 +2,7 @@
 
 **Julia reference implementation of the aggregate-library (PolyglotFormalisms) Common Library with formal verification.**
 
-[![License: PMPL-1.0](https://img.shields.io/badge/License-PMPL--1.0-blue.svg)](https://github.com/hyperpolymath/palimpsest-license)
+image:https://img.shields.io/badge/License-PMPL--1.0-blue.svg[License: PMPL-1.0,link="https://github.com/hyperpolymath/palimpsest-license"]
 [![Tests: Passing](https://img.shields.io/badge/tests-59%20passing-brightgreen.svg)]()
 
 ## Overview
