@@ -24,7 +24,16 @@
      (url . "https://github.com/hyperpolymath/SMTLib.jl"))
     ((name . "alib-for-rescript")
      (relationship . "sibling-implementation")
-     (url . "https://github.com/hyperpolymath/alib-for-rescript")))
+     (url . "https://github.com/hyperpolymath/alib-for-rescript"))
+    ((name . "tangle")
+     (relationship . "potential-consumer")
+     (nature . "TANGLE-JTV bridges topological + imperative paradigms - natural target for cross-language verification"))
+    ((name . "KnotTheory.jl")
+     (relationship . "sibling-standard")
+     (nature . "Knot theory invariants as formally verified operations"))
+    ((name . "ZeroProb.jl")
+     (relationship . "sibling-standard")
+     (nature . "Zero-probability event handling with formal measure-theoretic properties")))
 
   (what-this-is
     "A Julia package implementing the minimal overlap functions from aggregate-library (aLib), with formal verification of mathematical properties and semantic equivalence guarantees across programming languages.")

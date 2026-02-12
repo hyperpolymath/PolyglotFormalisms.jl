@@ -7,4 +7,6 @@ using PolyglotFormalisms
     include("comparison_tests.jl")
     include("logical_tests.jl")
     include("string_tests.jl")
+    include("collection_tests.jl")
+    include("conditional_tests.jl")
 end

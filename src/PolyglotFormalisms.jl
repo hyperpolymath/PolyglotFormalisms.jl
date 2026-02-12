@@ -57,7 +57,7 @@ include("arithmetic.jl")
 include("comparison.jl")
 include("logical.jl")
 include("string.jl")
-# include("collection.jl")
-# include("conditional.jl")
+include("collection.jl")
+include("conditional.jl")
 
 end # module PolyglotFormalisms
