@@ -387,4 +387,4 @@ function is_empty(s::AbstractString)::Bool
     return isempty(s)
 end
 
-end # module StringOpsOps
+end # module StringOps
