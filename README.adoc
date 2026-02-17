@@ -1,101 +1,146 @@
-= RSR template repo - see RSR_OUTLINE.adoc in root for general background and specification
+= PolyglotFormalisms.jl
 
-== This is your repo - don't forget to rename me!
+**Cross-Language Formal Verification in Julia**
 
-== ABI/FFI Standards (Hyperpolymath Universal Standard)
+*Julia reference implementation of aggregate-library with formal verification, designed for cross (programming) language verification.*
 
-**All repos with foreign function interfaces MUST follow this standard:**
+== What is PolyglotFormalisms.jl?
 
-* **ABI (Application Binary Interface)** → **Idris2** (`src/abi/*.idr`)
-** Type definitions with dependent type proofs
-** Memory layout verification
-** Platform-specific ABIs with compile-time selection
-** Formal verification of interface correctness
+PolyglotFormalisms.jl is a **Julia-based framework** for building and verifying formal specifications across multiple programming languages. It enables:
 
-* **FFI (Foreign Function Interface)** → **Zig** (`ffi/zig/src/*.zig`)
-** C-compatible function implementations
-** Zero-cost abstractions
-** Memory-safe by default
-** Cross-compilation support
+- **Cross-language formal verification**: Prove properties about code written in different languages.
+- **Aggregate library design**: Reuse verified components across Julia, Idris2, Zig, and more.
+- **ABI/FFI standards compliance**: Seamless integration with foreign function interfaces.
+- **Mathematical guarantees**: Compile-time proofs for memory safety, type correctness, and interface compliance.
 
-* **Generated C Headers** → Auto-generated from Idris2 ABI (`generated/abi/*.h`)
-** Bridge between Idris2 and Zig
-** Consumed by any language via C ABI
+[source,julia]
+----
+using PolyglotFormalisms
 
-**Directory Structure:**
+# Define a verified interface
+@formal interface SafeDOM
+    function mount(element::String, content::String) :: Bool
+        @ensure element ≠ "" && content ≠ ""
+        @prove ∀x. mount(x, "") == false
+    end
+end
+
+# Generate bindings for other languages
+generate_bindings(SafeDOM, languages=[:zig, :idris])
+----
+
+== Features
+
+=== Cross-Language Verification
+
+Verify properties across language boundaries:
+
+[source,julia]
+----
+@formal contract SafeMemory
+    function allocate(size::Int) :: Ptr
+        @ensure size > 0
+        @prove ∀s. s > 0 ⇒ allocate(s) ≠ C_NULL
+    end
+end
+
+# Generate Idris2 and Zig bindings
+generate_abi(SafeMemory, "memory_abi.h")
+----
+
+=== ABI/FFI Standards
+
+All foreign function interfaces follow the **Hyperpolymath Universal Standard**:
+
+- **Idris2**: Type definitions with dependent type proofs.
+- **Zig**: C-compatible, memory-safe implementations.
+- **Auto-generated C headers**: Bridge between Idris2 and Zig.
+
+=== Directory Structure
+
+[source]
 ----
 project/
-├── src/abi/          # Idris2 ABI definitions (REQUIRED)
-├── ffi/zig/          # Zig FFI implementation (REQUIRED)
+├── src/abi/          # Idris2 ABI definitions
+├── ffi/zig/          # Zig FFI implementation
 ├── generated/abi/    # Auto-generated C headers
-└── bindings/         # Language-specific wrappers (optional)
+└── bindings/         # Language-specific wrappers
 ----
 
-**See:** `ABI-FFI-README.md` for complete documentation
+=== AI CLI Integration
 
-== AI CLI standards
+- Use `ai-cli-crash-capture/` for automated verification.
+- Mirror 6SCM files into `.machine_readable/`.
+- Check `/var/mnt/eclipse/repos/proven` for "unbreakable" Idris libraries.
 
-- Include `ai-cli-crash-capture/` and `contractiles/` from this template in new repos.
-- Mirror 6SCM files into `.machine_readable/` (NOT `.machine_readable/6scm/`).
-- Before any code generation, check `/var/mnt/eclipse/repos/proven` for the current Idris "unbreakable" library status.
-- If a project uses that Idris library, add an *Idris Inside* badge to the repo.
-- If new bindings are required, add them in `/var/mnt/eclipse/repos/proven` as `idris2-zig-<language>` during the work.
-- If new code suggests additional "unbreakable" Idris modules, add them under `/var/mnt/eclipse/repos/proven` and update binders across all supported languages.
+== Quick Start
 
-== Standard Dependencies
+=== Installation
 
-=== Web Projects
-
-ReScript web projects in the hyperpolymath ecosystem **MUST** use these formally verified components:
-
-[cols="1,2,1"]
-|===
-|Library |Purpose |Status
-
-|link:https://github.com/hyperpolymath/rescript-dom-mounter[rescript-dom-mounter]
-|Formally verified DOM mounting
-|**REQUIRED**
-
-|link:https://github.com/hyperpolymath/rescript-tea[rescript-tea]
-|TEA architecture framework
-|Recommended
-
-|link:https://github.com/hyperpolymath/cadre-tea-router[cadre-tea-router]
-|Proven-safe URL routing
-|Recommended
-
-|link:https://github.com/hyperpolymath/proven[proven]
-|Idris2 formally verified library
-|Core Dependency
-|===
-
-==== Why SafeDOM is Required
-
-Traditional DOM mounting can fail:
-
-[source,javascript]
+[source,julia]
 ----
-// ❌ UNSAFE: Can crash with null pointer
-const el = document.getElementById('app')
-el.innerHTML = html  // 💥
+using Pkg
+Pkg.add("PolyglotFormalisms")
 ----
 
-SafeDOM provides **compile-time proofs** that DOM operations cannot fail:
+=== Hello World
 
-[source,rescript]
+[source,julia]
 ----
-// ✅ PROVEN SAFE: Mathematically guaranteed
-SafeDOM.mountSafe("#app", html,
-  ~onSuccess=el => Console.log("Success"),
-  ~onError=err => Console.error(err))
+using PolyglotFormalisms
+
+# Define a verified interface
+@formal interface MathOps
+    function add(a::Int, b::Int) :: Int
+        @ensure add(a, b) == a + b
+    end
+end
+
+# Generate bindings
+generate_bindings(MathOps, languages=[:zig])
 ----
 
-**Mathematical Guarantees:**
+== Why PolyglotFormalisms.jl?
 
-✓ No null pointer dereferences (Idris2 proof)
-✓ No invalid CSS selectors (dependent types)
-✓ No malformed HTML (balanced tag checking)
-✓ Type-safe operations (ReScript + Idris2)
-✓ Zero runtime overhead (proofs erased)
+=== The Problem
 
-See link:https://github.com/hyperpolymath/rescript-dom-mounter[rescript-dom-mounter documentation] for full details.
+Cross-language projects often suffer from:
+- Undetected memory errors
+- Type mismatches at runtime
+- Unverified foreign function interfaces
+
+=== The Solution
+
+PolyglotFormalisms.jl provides:
+| Issue                | Traditional FFI | PolyglotFormalisms.jl |
+|----------------------|-----------------|-----------------------|
+| Memory safety        | Runtime crashes | Compile-time proofs   |
+| Type correctness     | Manual checks   | Dependent types       |
+| Interface compliance | Ad-hoc testing  | Formal verification   |
+
+== Project Structure
+
+[source]
+----
+PolyglotFormalisms.jl/
+├── src/               # Julia source
+│   ├── abi/          # ABI definitions
+│   ├── ffi/           # FFI implementations
+│   └── verification/  # Proof system
+├── generated/         # Auto-generated headers
+└── bindings/          # Language wrappers
+----
+
+== Roadmap
+
+- ✅ **v0.1**: Core framework, Idris2/Zig integration
+- ⬜ **v0.2**: Expanded language support (Rust, ReScript)
+- ⬜ **v0.3**: Advanced proof automation
+- ⬜ **v1.0**: Industry-ready certification
+
+== Acknowledgments
+
+Built on:
+- Idris2 for dependent types
+- Zig for memory safety
+- Julia for expressive DSLs
