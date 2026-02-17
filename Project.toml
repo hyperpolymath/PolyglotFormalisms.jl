@@ -1,6 +1,6 @@
 name = "PolyglotFormalisms"
 uuid = "8fd979ee-625c-447d-87f1-33af4d789de5"
-version = "1.0.0"
+version = "1.0.1"
 authors = ["Jonathan D.A. Jewell <jonathan.jewell@open.ac.uk>"]
 license = "PMPL-1.0-or-later"
 
