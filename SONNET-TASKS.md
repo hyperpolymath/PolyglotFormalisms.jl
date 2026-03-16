@@ -55,7 +55,7 @@ grep -n "end # module StringOps$" src/string.jl
 
 ## TASK 2: Fix SPDX license headers in ABI/FFI template files (CRITICAL)
 
-Three files use `AGPL-3.0-or-later` instead of `PMPL-1.0-or-later`. Per CLAUDE.md policy,
+Three files use `PMPL-1.0-or-later` instead of `PMPL-1.0-or-later`. Per CLAUDE.md policy,
 AGPL-3.0 is the OLD license and must NEVER be used.
 
 **Files to fix:**
