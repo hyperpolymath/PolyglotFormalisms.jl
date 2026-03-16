@@ -511,7 +511,7 @@ println("All 6 modules loaded successfully")
 '
 
 # 3. No template placeholders remain
-grep -rn '{{PROJECT}}\|{{project}}\|{{PLACEHOLDER}}\|{{REPO}}\|{{OWNER}}\|{{FORGE}}' \
+grep -rn '{{PROJECT}}\|{{project}}\|{{PLACEHOLDER}}\|PolyglotFormalisms.jl\|hyperpolymath\|github.com' \
   src/ ffi/ test/ examples/
 # Expected: no output
 
