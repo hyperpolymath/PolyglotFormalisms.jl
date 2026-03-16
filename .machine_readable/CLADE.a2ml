@@ -1,0 +1,26 @@
+# SPDX-License-Identifier: PMPL-1.0-or-later
+# Clade declaration — part of the gv-clade-index registry
+# See: https://github.com/hyperpolymath/gv-clade-index
+
+[identity]
+uuid = "4b581a8f-1889-504e-b389-a8e0f86a8050"
+primary-forge = "github"
+primary-owner = "hyperpolymath"
+canonical-name = "PolyglotFormalisms.jl"
+prefixed-name = "fv-PolyglotFormalisms.jl"
+
+[clade]
+primary = "fv"
+secondary = []
+assigned = "2026-03-16"
+rationale = ""
+
+[forges]
+github = "hyperpolymath/PolyglotFormalisms.jl"
+gitlab = "hyperpolymath/PolyglotFormalisms.jl"
+bitbucket = "hyperpolymath/PolyglotFormalisms.jl"
+
+[lineage]
+type = "standalone"
+parent = "Julia package — formal methods"
+born = "2026-03-16"
