@@ -1,0 +1,165 @@
+# SPDX-License-Identifier: PMPL-1.0-or-later
+# Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
+#
+# ROADMAP.a2ml — Migrated from ROADMAP.scm
+
+[metadata]
+version = "0.1.0"
+last-updated = "2026-03-16"
+migrated-from = "ROADMAP.scm"
+
+[content]
+# - 1.0
+# - )
+# - PolyglotFormalisms.jl
+# - )
+# - 2025-01-23
+# - )
+# - 0.1.0
+# - )
+# - released
+# - )
+# - 2025-01-23
+# - )
+# - Initial release - Arithmetic module
+# - )
+# - 5 arithmetic operations (add, subtract, multiply, divide, modulo)
+# - 59 conformance tests matching aLib specifications
+# - Mathematical properties documented
+# - CI/CD workflows (tests, CodeQL, Scorecard)
+# - RSR-compliant structure
+# - ))
+# - 0.2.0
+# - )
+# - planned
+# - )
+# - 2025-Q1
+# - )
+# - Comparison and Logical modules
+# - )
+# - 6 comparison operations (less_than, greater_than, equal, not_equal, less_equal, greater_equal)
+# - 3 logical operations (and, or, not)
+# - Property documentation and conformance tests
+# - Cross-reference with aLib spec updates
+# - ))
+# - 0.3.0
+# - )
+# - planned
+# - )
+# - 2025-Q1
+# - )
+# - String and Collection modules
+# - )
+# - String operations (concat, length, substring)
+# - Collection operations (map, filter, fold, contains)
+# - Handle language-specific edge cases
+# - Performance benchmarks
+# - ))
+# - 0.4.0
+# - )
+# - planned
+# - )
+# - 2025-Q2
+# - )
+# - Conditional module + Axiom.jl integration
+# - )
+# - if_then_else operation
+# - Axiom.jl dependency integration
+# - @prove macros for all mathematical properties
+# - Compile-time property verification
+# - Formal proof certificates
+# - ))
+# - 1.0.0
+# - )
+# - planned
+# - )
+# - 2025-Q2
+# - )
+# - Production release
+# - )
+# - All 6 modules complete with formal proofs
+# - Cross-language verification examples (ReScript, Gleam, Elixir)
+# - Comprehensive documentation
+# - Performance benchmarks vs other implementations
+# - Julia General registry registration
+# - Academic paper submission (optional)
+# - )))
+# - Core Implementation
+# - )
+# - critical
+# - )
+# - Arithmetic ✓
+# - )
+# - Comparison & Logical
+# - )
+# - String & Collection
+# - )
+# - Conditional
+# - ))))
+# - Formal Verification
+# - )
+# - high
+# - )
+# - Properties documented ✓
+# - )
+# - Axiom.jl integration
+# - )
+# - All properties proven
+# - ))))
+# - Cross-Language Integration
+# - )
+# - high
+# - )
+# - Equivalence checking design
+# - )
+# - ReScript/Gleam/Elixir verification examples
+# - ))))
+# - Performance
+# - )
+# - medium
+# - )
+# - Initial benchmarks
+# - )
+# - Performance optimization pass
+# - ))))
+# - Documentation
+# - )
+# - medium
+# - )
+# - README and basic docs ✓
+# - )
+# - Formal verification guide
+# - )
+# - Complete API docs + academic paper
+# - )))))
+# - Integration with more aggregate-library implementations (Rust, Ada, Haskell)
+# - Property-based testing using Axiom.jl
+# - Performance optimizations for production use
+# - Safety-critical systems certification
+# - Academic research on cross-language semantic equivalence
+# - Tool support for automatic verification of new languages
+# - )
+# - Axiom.jl
+# - )
+# - development
+# - )
+# - v0.4.0
+# - )
+# - Formal proof integration delayed until Axiom.jl stable
+# - ))
+# - aggregate-library
+# - )
+# - active
+# - )
+# - all-versions
+# - )
+# - Spec changes require corresponding implementation updates
+# - ))
+# - Julia General registry
+# - )
+# - ready
+# - )
+# - v1.0.0
+# - )
+# - Registration requires all modules complete
+# - ))))

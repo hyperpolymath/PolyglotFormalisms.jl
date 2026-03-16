@@ -1,0 +1,95 @@
+# SPDX-License-Identifier: PMPL-1.0-or-later
+# Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
+#
+# DEPENDENCIES.a2ml — Migrated from DEPENDENCIES.scm
+
+[metadata]
+version = "0.1.0"
+last-updated = "2026-03-16"
+migrated-from = "DEPENDENCIES.scm"
+
+[content]
+# - 1.0
+# - )
+# - 2025-01-23
+# - )
+# - Julia
+# - )
+# - >=1.9
+# - )
+# - Core language runtime
+# - )
+# - https://julialang.org
+# - ))
+# - Test
+# - )
+# - 1.11.0
+# - )
+# - Standard library for testing
+# - )
+# - Julia stdlib
+# - )
+# - test
+# - )))
+# - Axiom.jl
+# - )
+# - >=0.1
+# - )
+# - Formal verification with @prove macros
+# - )
+# - https://github.com/hyperpolymath/Axiom.jl
+# - )
+# - integration-planned-v0.4.0
+# - ))
+# - SMTLib.jl
+# - )
+# - >=0.1
+# - )
+# - SMT solver integration for cross-language equivalence proofs
+# - )
+# - https://github.com/hyperpolymath/SMTLib.jl
+# - )
+# - integration-planned-v0.4.0
+# - )))
+# - Julia Package Manager
+# - )
+# - builtin
+# - )
+# - Dependency management and testing
+# - ))
+# - GitHub Actions
+# - )
+# - latest
+# - )
+# - CI/CD automation
+# - ))
+# - julia-actions/setup-julia
+# - )
+# - v2@f2258781
+# - )
+# - CI Julia installation
+# - )
+# - julia-actions/cache
+# - )
+# - v2@824c9ea9
+# - )
+# - CI dependency caching
+# - )
+# - CodeQL
+# - )
+# - v4@a4784f2d
+# - )
+# - Static security analysis
+# - )
+# - OpenSSF Scorecard
+# - )
+# - v2.4.0@62b2cac7
+# - )
+# - Supply chain security scoring
+# - )
+# - RSR policy: Julia projects use Pkg, not npm/Node.js
+# - )
+# - Julia Pkg
+# -  
+# - Deno for JS interop if needed
+# - )))

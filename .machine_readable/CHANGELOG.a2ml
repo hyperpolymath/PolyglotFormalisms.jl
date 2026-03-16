@@ -1,0 +1,115 @@
+# SPDX-License-Identifier: PMPL-1.0-or-later
+# Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
+#
+# CHANGELOG.a2ml — Migrated from CHANGELOG.scm
+
+[metadata]
+version = "0.1.0"
+last-updated = "2026-03-16"
+migrated-from = "CHANGELOG.scm"
+
+[content]
+# - 1.0
+# - )
+# - PolyglotFormalisms.jl
+# - )
+# - keep-a-changelog
+# - )
+# - 2026-01-23
+# - )
+# - 0.2.0
+# - )
+# - 2026-01-23
+# - )
+# - released
+# - )
+# - v0.2.0
+# - )
+# - Comparison module with 6 operations (less_than, greater_than, equal, not_equal, less_equal, greater_equal)
+# - Logical module with 3 operations (and, or, not)
+# - 98 conformance tests for Comparison module
+# - 41 conformance tests for Logical module
+# - Mathematical properties documentation for all comparison operations
+# - Boolean algebra properties documentation for all logical operations
+# - Truth tables and edge case tests for logical operations
+# - IEEE 754 edge case handling for NaN, Inf, and signed zeros
+# - )
+# - Total test count: 59 → 198 (139 new tests)
+# - )
+# - 0.1.0
+# - )
+# - 2025-01-23
+# - )
+# - released
+# - )
+# - v0.1.0
+# - )
+# - https://github.com/hyperpolymath/PolyglotFormalisms.jl/releases/tag/v0.1.0
+# - )
+# - Arithmetic module with 5 operations (add, subtract, multiply, divide, modulo)
+# - 59 conformance tests matching aggregate-library specifications
+# - Mathematical property documentation in docstrings
+# - CI workflows: tests (Julia 1.9/1.10/nightly), CodeQL, OpenSSF Scorecard
+# - Community files: LICENSE (PMPL-1.0), CONTRIBUTING, SECURITY
+# - RSR-compliant structure with .machine_readable/ SCM files
+# - ECOSYSTEM.scm - project relationships
+# - META.scm - architectural decisions (3 ADRs)
+# - STATE.scm - project state tracking
+# - DEPENDENCIES.scm - dependency specification
+# - ROADMAP.scm - development roadmap
+# - CHANGELOG.scm - version history
+# - GitHub repository with 8 topics/tags
+# - SHA-pinned GitHub Actions for supply chain security
+# - )
+# - All GitHub Actions SHA-pinned to prevent supply chain attacks
+# - OpenSSF Scorecard integration for continuous security monitoring
+# - CodeQL analysis for vulnerability detection
+# - ))
+# - 0.0.1-dev
+# - )
+# - 2025-01-23
+# - )
+# - development
+# - )
+# - Initial development as 'aLib.jl'
+# - Renamed to PolyglotFormalisms.jl for clarity
+# - Package structure established
+# - Test infrastructure created
+# - First module (Arithmetic) implemented
+# - ))
+# - 0.3.0
+# - )
+# - 2025-Q1
+# - )
+# - String module (3 operations)
+# - Collection module (4 operations)
+# - Performance benchmarks
+# - ))
+# - 0.4.0
+# - )
+# - 2025-Q2
+# - )
+# - Conditional module (1 operation)
+# - Axiom.jl integration
+# - @prove macros for all properties
+# - Formal verification at compile time
+# - ))
+# - 1.0.0
+# - )
+# - 2025-Q2
+# - )
+# - All 6 modules complete
+# - Cross-language verification examples
+# - Julia General registry registration
+# - Production-ready release
+# - )))
+# - conventional-commits
+# - )
+# - Clearly marked in BREAKING CHANGE section
+# - )
+# - Announced one minor version before removal
+# - )
+# - Highlighted in Security section
+# - )
+# - Claude Sonnet 4.5 contributions acknowledged
+# - )))
