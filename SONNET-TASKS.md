@@ -68,7 +68,7 @@ AGPL-3.0 is the OLD license and must NEVER be used.
 
 **Action:** In each file, replace:
 ```
-SPDX-License-Identifier: AGPL-3.0-or-later
+SPDX-License-Identifier: PMPL-1.0-or-later
 ```
 with:
 ```
