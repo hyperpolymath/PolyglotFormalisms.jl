@@ -1,6 +1,7 @@
 # SPDX-License-Identifier: PMPL-1.0-or-later
 name: CodeQL
-permissions: read-all
+permissions:
+  contents: read
 
 on:
   push:
