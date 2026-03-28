@@ -1,5 +1,0 @@
-= PolyglotFormalisms.jl
-:toc: preamble
-:icons: font
-
-
