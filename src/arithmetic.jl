@@ -27,7 +27,7 @@ Arithmetic.add(2, 3)         # Returns 5
 Arithmetic.subtract(10, 3)   # Returns 7
 Arithmetic.multiply(4, 5)    # Returns 20
 
-# All operations have proven properties
+# Operations documented with target properties — proofs pending
 # For add:
 #   - Commutativity: add(a, b) == add(b, a)
 #   - Associativity: add(add(a, b), c) == add(a, add(b, c))

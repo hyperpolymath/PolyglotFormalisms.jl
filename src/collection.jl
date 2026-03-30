@@ -2,7 +2,7 @@
 """
     Collection
 
-Cross-language collection operations with formally verified properties.
+Cross-language collection operations with documented target properties (proofs pending).
 Part of the PolyglotFormalisms common library specification.
 
 Provides fundamental collection operations that maintain consistent
@@ -36,7 +36,7 @@ Collection.map_items(x -> x * 2, [1, 2, 3])       # Returns [2, 4, 6]
 Collection.filter_items(iseven, [1, 2, 3, 4])       # Returns [2, 4]
 Collection.fold_items(+, 0, [1, 2, 3, 4])           # Returns 10
 
-# All operations have proven properties
+# Operations documented with target properties — proofs pending
 # For map_items:
 #   - Length preservation: length(map_items(f, xs)) == length(xs)
 #   - Composition: map_items(f . g, xs) == map_items(f, map_items(g, xs))

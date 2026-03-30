@@ -4,7 +4,7 @@
 
 Julia reference implementation of the aggregate-library (PolyglotFormalisms) Common Library.
 
-This package provides formally verified implementations of the minimal overlap
+This package provides implementations targeting formal verification of the minimal overlap
 functions specified in the PolyglotFormalisms project. Each function includes:
 
 1. Implementation following the PolyglotFormalisms specification

@@ -1,0 +1,34 @@
+# TEST-NEEDS: PolyglotFormalisms.jl
+
+## Current State
+
+| Category | Count | Details |
+|----------|-------|---------|
+| **Source modules** | 17 | 2,943 lines |
+| **Test files** | 7 | 1,292 lines, 635 @test/@testset |
+| **Benchmarks** | 0 | None |
+| **E2E tests** | 0 | None |
+
+## What's Missing
+
+### E2E Tests
+- [ ] No end-to-end formalism translation/verification test
+
+### Aspect Tests
+- [ ] **Performance**: No benchmarks for formalism operations
+- [ ] **Error handling**: No tests for malformed formalisms, type mismatches across paradigms
+
+### Benchmarks Needed
+- [ ] Formalism translation throughput
+- [ ] Cross-paradigm verification time
+
+### Self-Tests
+- [ ] No self-consistency check
+
+## FLAGGED ISSUES
+- **635 tests across 7 files** -- excellent coverage
+- **17 modules with 635 tests = 37 tests/module** -- strong ratio
+- **0 benchmarks** -- gap for a computation library
+- **7 test files** -- best test file organization among Julia packages
+
+## Priority: P3 (LOW) -- well tested, needs benchmarks
