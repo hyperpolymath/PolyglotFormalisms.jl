@@ -32,3 +32,9 @@
 - **7 test files** -- best test file organization among Julia packages
 
 ## Priority: P3 (LOW) -- well tested, needs benchmarks
+
+## FAKE-FUZZ ALERT
+
+- `tests/fuzz/placeholder.txt` is a scorecard placeholder inherited from rsr-template-repo — it does NOT provide real fuzz testing
+- Replace with an actual fuzz harness (see rsr-template-repo/tests/fuzz/README.adoc) or remove the file
+- Priority: P2 — creates false impression of fuzz coverage
