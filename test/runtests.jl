@@ -10,3 +10,6 @@ using PolyglotFormalisms
     include("collection_tests.jl")
     include("conditional_tests.jl")
 end
+
+include("e2e_test.jl")
+include("property_test.jl")
