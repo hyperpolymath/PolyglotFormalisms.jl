@@ -2,17 +2,14 @@
 name: CI
 permissions:
   contents: read
-
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
-
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
-
 jobs:
   test:
     name: Julia ${{ matrix.julia-version }} - ${{ matrix.os }}
@@ -23,25 +20,18 @@ jobs:
       matrix:
         julia-version: ['1.9', '1.10', 'nightly']
         os: [ubuntu-latest, macos-latest]
-
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v4
-
       - uses: julia-actions/setup-julia@4c0cb0fce8556fdb04a90347310e5db8b1f98fb9 # v2
         with:
           version: ${{ matrix.julia-version }}
-
       - uses: julia-actions/cache@824c9ea9043b860d397cfb4c4c52d7682db0fce4 # v2
-
       - name: Build package
         run: julia --project=. -e 'using Pkg; Pkg.instantiate()'
-
       - name: Run tests
         run: julia --project=. -e 'using Pkg; Pkg.test()'
-
       - uses: julia-actions/julia-processcoverage@03114f09f119417c3242a9fb6e0b722676aedf38 # v1
         if: matrix.os == 'ubuntu-latest' && matrix.julia-version == '1.10'
-
       - uses: codecov/codecov-action@1af58845a975a7985b0beb0cbe6fbbb71a41dbad # v5
         if: matrix.os == 'ubuntu-latest' && matrix.julia-version == '1.10'
         with:
