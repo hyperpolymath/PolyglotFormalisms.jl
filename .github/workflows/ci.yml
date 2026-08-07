@@ -27,7 +27,7 @@ jobs:
           version: ${{ matrix.julia-version }}
       - uses: julia-actions/cache@824c9ea9043b860d397cfb4c4c52d7682db0fce4 # v2
       - name: Build package
-        run: julia --project=. -e 'using Pkg; Pkg.instantiate()'
+        run: julia --project=. -e 'using Pkg; Pkg.Registry.add("General"); Pkg.Registry.add(Pkg.RegistrySpec(url="https://github.com/hyperpolymath/julia-professional-registry.git")); Pkg.instantiate(); Pkg.build(); Pkg.test()'
       - name: Run tests
         run: julia --project=. -e 'using Pkg; Pkg.test()'
       - uses: julia-actions/julia-processcoverage@03114f09f119417c3242a9fb6e0b722676aedf38 # v1
