@@ -27,7 +27,7 @@ jobs:
           version: ${{ matrix.julia-version }}
       - uses: julia-actions/cache@a45e8fa8be21c18a06b7177052533149e61e9b38 # v3.1.0
       - name: Build package
-        run: julia --project=. -e 'using Pkg; Pkg.Registry.add("General"); Pkg.Registry.add(Pkg.RegistrySpec(url="https://github.com/hyperpolymath/julia-professional-registry.git")); Pkg.instantiate(); Pkg.build(); Pkg.test()'
+        run: julia --project=. -e 'using Pkg; Pkg.Registry.add("General"); Pkg.Registry.add(Pkg.RegistrySpec(url="https://github.com/hyperpolymath/julia-professional-registry.git")); Pkg.develop(url="https://github.com/hyperpolymath/AcceleratorGate.jl.git"); Pkg.instantiate(); Pkg.build(); Pkg.test()'
       - name: Run tests
         run: julia --project=. -e 'using Pkg; Pkg.test()'
       - uses: julia-actions/julia-processcoverage@03114f09f119417c3242a9fb6e0b722676aedf38 # v1
