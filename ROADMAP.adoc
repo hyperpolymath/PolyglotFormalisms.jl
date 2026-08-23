@@ -21,7 +21,7 @@
 == Future Horizons (v2.0+)
 
 === Automated Semantic Equivalence
-* [ ] **Cross-Language Proof Runner**: A unified dashboard that visualizes proof status across all `aggregate-library` implementations (Julia, ReScript, Elixir, etc.).
+* [ ] **Cross-Language Proof Runner**: A unified dashboard that visualizes proof status across all `aggregate-library` implementations (Julia, AffineScript, Elixir, etc.).
 * [ ] **Implementation Synthesis**: Automatically generate "correct-by-construction" code in multiple languages from a single PolyglotFormalisms specification.
 
 === Hardware-Level Formalisms

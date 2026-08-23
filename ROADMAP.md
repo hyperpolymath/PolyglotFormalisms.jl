@@ -9,7 +9,7 @@ Copyright (c) Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 Formally verified Julia reference implementation of the [aggregate-library](https://github.com/hyperpolymath/aggregate-library) common specification:
 - Core modules: Arithmetic, Comparison, Logical, StringOps, Collection, Conditional.
 - 422+ passing conformance tests matching the cross-language spec.
-- Semantic alignment with ReScript, Gleam, and Elixir implementations.
+- Semantic alignment with AffineScript, Gleam, and Elixir implementations.
 
 **Status:** Stable core implementation. High test coverage. Ready for formal proof integration.
 
@@ -29,7 +29,7 @@ Formally verified Julia reference implementation of the [aggregate-library](http
 
 **COULD:**
 - [ ] **Collection Universality Proofs**: Prove the "Free Theorems" for map/filter/fold operations using parametricity.
-- [ ] **Equivalence Checking Bridge**: Tooling to run semantic equivalence checks between Julia and ReScript/Elixir implementations via a shared SMT backend.
+- [ ] **Equivalence Checking Bridge**: Tooling to run semantic equivalence checks between Julia and AffineScript/Elixir implementations via a shared SMT backend.
 
 ---
 
@@ -54,7 +54,7 @@ Formally verified Julia reference implementation of the [aggregate-library](http
 ## Future Horizons (v2.0+)
 
 ### Automated Semantic Equivalence
-- [ ] **Cross-Language Proof Runner**: A unified dashboard that visualizes proof status across all `aggregate-library` implementations (Julia, ReScript, Elixir, etc.).
+- [ ] **Cross-Language Proof Runner**: A unified dashboard that visualizes proof status across all `aggregate-library` implementations (Julia, AffineScript, Elixir, etc.).
 - [ ] **Implementation Synthesis**: Automatically generate "correct-by-construction" code in multiple languages from a single PolyglotFormalisms specification.
 
 ### Hardware-Level Formalisms

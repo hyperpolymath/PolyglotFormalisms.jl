@@ -11,7 +11,7 @@ This document tracks the implementation status of PolyglotFormalisms Common Libr
 | Language | Repository | Version | Status | Tests | Notes |
 |----------|-----------|---------|--------|-------|-------|
 | **Julia** | [PolyglotFormalisms.jl](https://github.com/hyperpolymath/PolyglotFormalisms.jl) | 0.3.0 | ✅ Complete | 287/287 | Reference implementation |
-| **ReScript** | [alib-for-rescript](https://github.com/hyperpolymath/alib-for-rescript) | 0.3.0 | ✅ Complete | Full coverage | packages/common/ |
+| **AffineScript** | [alib-for-affinescript](https://github.com/hyperpolymath/alib-for-affinescript) | 0.3.0 | ✅ Complete | Full coverage | packages/common/ |
 | **Gleam** | [polyglot_formalisms_gleam](https://github.com/hyperpolymath/polyglot_formalisms_gleam) | 0.3.0 | ✅ Complete | 131/131 | BEAM runtime, gleeunit tests |
 | **Elixir** | [polyglot_formalisms_elixir](https://github.com/hyperpolymath/polyglot_formalisms_elixir) | 0.3.0 | ✅ Complete | 253/253 | 120 doctests + 133 unit tests |
 
@@ -19,7 +19,7 @@ This document tracks the implementation status of PolyglotFormalisms Common Libr
 
 ### Arithmetic Module
 
-| Operation | Julia | ReScript | Gleam | Elixir | Notes |
+| Operation | Julia | AffineScript | Gleam | Elixir | Notes |
 |-----------|-------|----------|-------|--------|-------|
 | `add` | ✅ | ✅ | ✅ | ✅ | Float operation |
 | `subtract` | ✅ | ✅ | ✅ | ✅ | Float operation |
@@ -29,7 +29,7 @@ This document tracks the implementation status of PolyglotFormalisms Common Libr
 
 ### Comparison Module
 
-| Operation | Julia | ReScript | Gleam | Elixir | Notes |
+| Operation | Julia | AffineScript | Gleam | Elixir | Notes |
 |-----------|-------|----------|-------|--------|-------|
 | `less_than` | ✅ | ✅ | ✅ | ✅ | Float comparison |
 | `greater_than` | ✅ | ✅ | ✅ | ✅ | Float comparison |
@@ -40,7 +40,7 @@ This document tracks the implementation status of PolyglotFormalisms Common Libr
 
 ### Logical Module
 
-| Operation | Julia | ReScript | Gleam | Elixir | Notes |
+| Operation | Julia | AffineScript | Gleam | Elixir | Notes |
 |-----------|-------|----------|-------|--------|-------|
 | `and` | ✅ | ✅ | ✅ | ✅ `logical_and` | Elixir renamed due to keyword conflict |
 | `or` | ✅ | ✅ | ✅ | ✅ `logical_or` | Elixir renamed due to keyword conflict |
@@ -48,12 +48,12 @@ This document tracks the implementation status of PolyglotFormalisms Common Libr
 
 ### String Module
 
-| Operation | Julia | ReScript | Gleam | Elixir | Notes |
+| Operation | Julia | AffineScript | Gleam | Elixir | Notes |
 |-----------|-------|----------|-------|--------|-------|
 | `concat` | ✅ | ✅ | ✅ | ✅ | String concatenation |
 | `length` | ✅ | ✅ | ✅ | ✅ `string_length` | Elixir renamed to avoid stdlib conflict |
-| `substring` | ✅ | ✅ | ✅ | ✅ | Julia/Elixir: 1-based; ReScript/Gleam: 0-based |
-| `index_of` | ✅ | ✅ | ✅ | ✅ | Julia/Elixir: returns 0 when not found; ReScript/Gleam: returns -1 |
+| `substring` | ✅ | ✅ | ✅ | ✅ | Julia/Elixir: 1-based; AffineScript/Gleam: 0-based |
+| `index_of` | ✅ | ✅ | ✅ | ✅ | Julia/Elixir: returns 0 when not found; AffineScript/Gleam: returns -1 |
 | `contains` | ✅ | ✅ | ✅ | ✅ `string_contains` | Elixir renamed to avoid stdlib conflict |
 | `starts_with` | ✅ | ✅ | ✅ | ✅ | Prefix check |
 | `ends_with` | ✅ | ✅ | ✅ | ✅ | Suffix check |
@@ -76,14 +76,14 @@ This document tracks the implementation status of PolyglotFormalisms Common Libr
 - **Total tests**: 287 (59 arithmetic + 98 comparison + 41 logical + 89 string)
 - **String indexing**: 1-based (Julia convention)
 
-### ReScript
+### AffineScript
 - **File locations**: `packages/common/Arithmetic.res`, `packages/common/Comparison.res`, `packages/common/Logical.res`, `packages/common/String.res`
 - **Test locations**: `tests/Arithmetic_test.res`, `tests/Comparison_test.res`, `tests/Logical_test.res`, `tests/String_test.res`
 - **Operators**: Float-specific operators (`+.`, `-.`, `*.`, `/.`, standard comparison, `&&`, `||`, `!`)
 - **Type system**: Explicit `float`, `bool`, and `string` types
 - **Test framework**: RescriptMocha
 - **Modulo**: Uses `mod_float` for float modulo operation
-- **String indexing**: 0-based (JavaScript/ReScript convention)
+- **String indexing**: 0-based (JavaScript/AffineScript convention)
 - **String operators**: Uses `++` for concatenation, standard String module functions
 
 ### Gleam
@@ -120,7 +120,7 @@ This document tracks the implementation status of PolyglotFormalisms Common Libr
 
 ## Operator Comparison Table
 
-| Operation | Julia | ReScript | Gleam | Elixir |
+| Operation | Julia | AffineScript | Gleam | Elixir |
 |-----------|-------|----------|-------|--------|
 | Float addition | `+` | `+.` | `+.` | `+` |
 | Float subtraction | `-` | `-.` | `-.` | `-` |

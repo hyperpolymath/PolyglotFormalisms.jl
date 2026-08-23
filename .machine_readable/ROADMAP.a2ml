@@ -78,7 +78,7 @@ migrated-from = "ROADMAP.scm"
 # - Production release
 # - )
 # - All 6 modules complete with formal proofs
-# - Cross-language verification examples (ReScript, Gleam, Elixir)
+# - Cross-language verification examples (AffineScript, Gleam, Elixir)
 # - Comprehensive documentation
 # - Performance benchmarks vs other implementations
 # - Julia General registry registration
@@ -112,7 +112,7 @@ migrated-from = "ROADMAP.scm"
 # - )
 # - Equivalence checking design
 # - )
-# - ReScript/Gleam/Elixir verification examples
+# - AffineScript/Gleam/Elixir verification examples
 # - ))))
 # - Performance
 # - )

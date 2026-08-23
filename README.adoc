@@ -25,7 +25,7 @@ The aggregate-library defines a minimal intersection of functionality across rad
 . *Formal Verification* — Mathematical properties are proven using Axiom.jl's `@prove` macro (planned)
 . *Reference Implementation* — Serves as a semantically verified baseline for other language implementations
 . *Conformance Testing* — Test suite exactly matches PolyglotFormalisms specifications
-. *Cross-Language Bridge* — Enables verification that ReScript, Gleam, Elixir implementations satisfy the same properties
+. *Cross-Language Bridge* — Enables verification that AffineScript, Gleam, Elixir implementations satisfy the same properties
 
 == Installation
 
@@ -223,7 +223,7 @@ This enables:
 
 PolyglotFormalisms.jl serves as a formally verified reference for semantic equivalence checking:
 
-. Implement in target language (ReScript, Gleam, Elixir)
+. Implement in target language (AffineScript, Gleam, Elixir)
 . Run PolyglotFormalisms conformance tests in both languages
 . Use Axiom.jl + SMTLib.jl to prove semantic equivalence
 . Generate verification certificate
@@ -234,7 +234,7 @@ using PolyglotFormalisms
 using Axiom
 using SMTLib
 
-# Verify ReScript implementation semantically equivalent to Julia
+# Verify AffineScript implementation semantically equivalent to Julia
 verify_equivalence(
     julia_impl = Arithmetic.add,
     rescript_impl = RescriptFFI.add,
@@ -283,7 +283,7 @@ See link:TOPOLOGY.md[TOPOLOGY.md] for a visual architecture map and completion d
 == Related Projects
 
 * https://github.com/hyperpolymath/aggregate-library[aggregate-library] — PolyglotFormalisms specification
-* https://github.com/hyperpolymath/alib-for-rescript[alib-for-rescript] — ReScript implementation
+* https://github.com/hyperpolymath/alib-for-affinescript[alib-for-affinescript] — AffineScript implementation
 * https://github.com/hyperpolymath/polyglot-formalisms-gleam[polyglot-formalisms-gleam] — Gleam implementation
 * https://github.com/hyperpolymath/polyglot-formalisms-elixir[polyglot-formalisms-elixir] — Elixir implementation
 * https://github.com/hyperpolymath/Axiom.jl[Axiom.jl] — Formal verification for ML models
