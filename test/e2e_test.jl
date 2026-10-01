@@ -36,7 +36,7 @@ using PolyglotFormalisms
         @test evens == [2, 4]
 
         # Reduce to sum via repeated addition.
-        total = Collection.reduce_items((acc, x) -> Arithmetic.add(acc, x), nums, 0)
+        total = Collection.fold_items((acc, x) -> Arithmetic.add(acc, x), 0, nums)
         @test total == 15
     end
 
@@ -47,10 +47,10 @@ using PolyglotFormalisms
         @test lengths == [5, 5, 5, 8]
 
         # Build a concatenated string from all words.
-        joined = Collection.reduce_items(
+        joined = Collection.fold_items(
             (acc, w) -> StringOps.concat(acc, StringOps.concat(" ", w)),
-            words[2:end],
-            words[1]
+            words[1],
+            words[2:end]
         )
         @test StringOps.length(joined) > 0
         @test contains(joined, "hello")

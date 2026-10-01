@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: MPL-2.0
 using Test
-using PolyglotFormalisms.StringOps
+import PolyglotFormalisms.StringOps
 
 @testset "String Operations" begin
     @testset "concat" begin
