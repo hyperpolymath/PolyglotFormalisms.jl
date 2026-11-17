@@ -78,9 +78,9 @@ map_items: (a -> b), Vector{a} -> Vector{b}
 
 **Returns:** A new vector where each element at index i is `f(collection[i])`.
 
-# Mathematical Properties (Proven with Axiom.jl)
+# Mathematical Properties (tested; Axiom.jl proofs planned)
 
-When Axiom.jl is available, these properties are formally proven:
+When Axiom.jl is available, these properties are to be formally proven (today they are tested):
 
 - **Length preservation**: `length(map_items(f, xs)) == length(xs)`
 - **Composition**: `map_items(f . g, xs) == map_items(f, map_items(g, xs))`
@@ -133,7 +133,7 @@ filter_items: (a -> Bool), Vector{a} -> Vector{a}
 **Returns:** A new vector containing only elements where `pred(element)` is true.
 Preserves relative ordering of retained elements.
 
-# Mathematical Properties (Proven with Axiom.jl)
+# Mathematical Properties (tested; Axiom.jl proofs planned)
 
 - **Length bound**: `length(filter_items(pred, xs)) <= length(xs)`
 - **Monotonicity**: if pred1 implies pred2, then filter(pred1, xs) is a subset of filter(pred2, xs)
@@ -190,7 +190,7 @@ fold_items: ((b, a) -> b), b, Vector{a} -> b
 **Returns:** The final accumulator value after processing all elements left to right.
 For empty collection, returns `init`.
 
-# Mathematical Properties (Proven with Axiom.jl)
+# Mathematical Properties (tested; Axiom.jl proofs planned)
 
 - **Identity**: `fold_items(f, init, []) == init`
 - **Single element**: `fold_items(f, init, [x]) == f(init, x)`
@@ -245,7 +245,7 @@ zip_items: Vector{a}, Vector{b} -> Vector{Tuple{a, b}}
 **Returns:** A vector of tuples `(a[i], b[i])` for `i` in `1:min(length(a), length(b))`.
 Truncates to the shorter collection's length.
 
-# Mathematical Properties (Proven with Axiom.jl)
+# Mathematical Properties (tested; Axiom.jl proofs planned)
 
 - **Length**: `length(zip_items(a, b)) == min(length(a), length(b))`
 - **Unzip**: `map_items(first, zip_items(a, b)) == a[1:min(length(a),length(b))]`
@@ -298,7 +298,7 @@ flat_map_items: (a -> Vector{b}), Vector{a} -> Vector{b}
 **Returns:** A single flat vector formed by concatenating all results of `f`.
 Equivalent to `vcat(map_items(f, collection)...)`.
 
-# Mathematical Properties (Proven with Axiom.jl)
+# Mathematical Properties (tested; Axiom.jl proofs planned)
 
 - **Monad left identity**: `flat_map_items(f, [x]) == f(x)`
 - **Monad right identity**: `flat_map_items(x -> [x], xs) == xs`
@@ -354,7 +354,7 @@ group_by: (a -> k), Vector{a} -> Dict{k, Vector{a}}
 vectors of elements assigned to that key. Elements within each group preserve
 their original relative order.
 
-# Mathematical Properties (Proven with Axiom.jl)
+# Mathematical Properties (tested; Axiom.jl proofs planned)
 
 - **Partition**: groups form a partition of the original collection
 - **Totality**: every element appears in exactly one group
@@ -413,7 +413,7 @@ sort_by: (a -> Comparable), Vector{a} -> Vector{a}
 **Returns:** A new vector with elements sorted according to the keys returned by
 `compare_fn`. Uses stable sort: equal elements preserve their original relative order.
 
-# Mathematical Properties (Proven with Axiom.jl)
+# Mathematical Properties (tested; Axiom.jl proofs planned)
 
 - **Length preservation**: `length(sort_by(f, xs)) == length(xs)`
 - **Permutation**: result is a permutation of input
@@ -464,7 +464,7 @@ unique_items: Vector{a} -> Vector{a}
 **Returns:** A new vector with duplicate elements removed. Keeps only the first
 occurrence of each element. Uses `==` for equality comparison.
 
-# Mathematical Properties (Proven with Axiom.jl)
+# Mathematical Properties (tested; Axiom.jl proofs planned)
 
 - **Length bound**: `length(unique_items(xs)) <= length(xs)`
 - **Idempotence**: `unique_items(unique_items(xs)) == unique_items(xs)`
@@ -517,7 +517,7 @@ partition_items: (a -> Bool), Vector{a} -> Tuple{Vector{a}, Vector{a}}
 Preserves relative order within each partition. Together, both partitions contain all
 original elements exactly once.
 
-# Mathematical Properties (Proven with Axiom.jl)
+# Mathematical Properties (tested; Axiom.jl proofs planned)
 
 - **Completeness**: `vcat(partition[1], partition[2])` is a permutation of input
 - **Disjointness**: no element appears in both partitions
@@ -573,7 +573,7 @@ take_items: Int, Vector{a} -> Vector{a}
 **Returns:** A new vector containing at most `n` elements from the beginning of
 the collection. If `n <= 0`, returns empty vector. Preserves element order.
 
-# Mathematical Properties (Proven with Axiom.jl)
+# Mathematical Properties (tested; Axiom.jl proofs planned)
 
 - **Length**: `length(take_items(n, xs)) == min(max(n, 0), length(xs))`
 - **Prefix**: `take_items(n, xs)` is a prefix of `xs`
@@ -627,7 +627,7 @@ drop_items: Int, Vector{a} -> Vector{a}
 **Returns:** A new vector with at most `n` elements removed from the beginning.
 If `n <= 0`, returns entire collection. If `n >= length`, returns empty.
 
-# Mathematical Properties (Proven with Axiom.jl)
+# Mathematical Properties (tested; Axiom.jl proofs planned)
 
 - **Complement**: `vcat(take_items(n, xs), drop_items(n, xs)) == xs`
 - **Length**: `length(drop_items(n, xs)) == max(length(xs) - max(n, 0), 0)`
@@ -681,7 +681,7 @@ any_item: (a -> Bool), Vector{a} -> Bool
 Returns `false` for empty collections (vacuous falsehood). May short-circuit
 on first true result.
 
-# Mathematical Properties (Proven with Axiom.jl)
+# Mathematical Properties (tested; Axiom.jl proofs planned)
 
 - **Existential quantifier**: equivalent to exists x in xs : pred(x)
 - **Empty collection**: `any_item(pred, []) == false`
@@ -735,7 +735,7 @@ all_items: (a -> Bool), Vector{a} -> Bool
 Returns `true` for empty collections (vacuous truth). May short-circuit on
 first false result.
 
-# Mathematical Properties (Proven with Axiom.jl)
+# Mathematical Properties (tested; Axiom.jl proofs planned)
 
 - **Universal quantifier**: equivalent to forall x in xs : pred(x)
 - **Empty collection**: `all_items(pred, []) == true`

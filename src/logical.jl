@@ -67,9 +67,9 @@ and: Boolean, Boolean -> Boolean
 | false | true  | false     |
 | false | false | false     |
 
-# Mathematical Properties (Proven with Axiom.jl)
+# Mathematical Properties (tested; Axiom.jl proofs planned)
 
-When Axiom.jl is available, these properties are formally proven:
+When Axiom.jl is available, these properties are to be formally proven (today they are tested):
 
 - **Commutativity**: `∀a b. and(a, b) == and(b, a)`
 - **Associativity**: `∀a b c. and(and(a, b), c) == and(a, and(b, c))`
@@ -133,7 +133,7 @@ or: Boolean, Boolean -> Boolean
 | false | true  | true     |
 | false | false | false    |
 
-# Mathematical Properties (Proven with Axiom.jl)
+# Mathematical Properties (tested; Axiom.jl proofs planned)
 
 - **Commutativity**: `∀a b. or(a, b) == or(b, a)`
 - **Associativity**: `∀a b c. or(or(a, b), c) == or(a, or(b, c))`
@@ -193,7 +193,7 @@ not: Boolean -> Boolean
 | true  | false  |
 | false | true   |
 
-# Mathematical Properties (Proven with Axiom.jl)
+# Mathematical Properties (tested; Axiom.jl proofs planned)
 
 - **Involution** (double negation): `∀a. not(not(a)) == a`
 - **Excluded middle**: `∀a. or(a, not(a)) == true`

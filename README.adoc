@@ -6,7 +6,7 @@
 :toc: preamble
 :icons: font
 
-Julia reference implementation of the PolyglotFormalisms Common Library with formal verification.
+Julia reference implementation of the PolyglotFormalisms Common Library. Its properties are tested; formal verification is planned.
 
 image:https://img.shields.io/badge/OpenSSF-Best_Practices-green?logo=opensourcesecurity[OpenSSF Best Practices,link="https://www.bestpractices.dev/en/projects/new?repo_url=https://github.com/hyperpolymath/PolyglotFormalisms.jl"]
 image:https://img.shields.io/badge/License-MPL--2.0-blue.svg[License: PMPL-1.0,link="https://github.com/hyperpolymath/palimpsest-license"]
@@ -16,14 +16,16 @@ image:https://img.shields.io/badge/Project-Topology-9558B2[Project Topology,link
 
 == Overview
 
-PolyglotFormalisms.jl provides formally verified implementations of the minimal overlap functions specified in the https://github.com/hyperpolymath/aggregate-library[aggregate-library] project. This package serves as a Julia reference implementation for cross-language semantic equivalence verification.
+PolyglotFormalisms.jl provides tested reference implementations of the minimal overlap functions specified in the https://github.com/hyperpolymath/aggregate-library[aggregate-library] project. This package serves as a Julia reference implementation for cross-language semantic equivalence verification.
+
+NOTE: Nothing in this repository is formally verified yet. The mathematical properties listed below are checked by the test suite (`tested-only` in the vocabulary of standards `3-practice/PROOF-POLICY.adoc` §5), not proven. Formal proofs through Axiom.jl are planned; see <<Integration with Axiom.jl>>.
 
 == Why PolyglotFormalisms.jl?
 
 The aggregate-library defines a minimal intersection of functionality across radically different programming languages. PolyglotFormalisms.jl adds value by:
 
-. *Formal Verification* — Mathematical properties are proven using Axiom.jl's `@prove` macro (planned)
-. *Reference Implementation* — Serves as a semantically verified baseline for other language implementations
+. *Formal Verification (planned)* — Mathematical properties are to be proven with Axiom.jl's `@prove` macro. Today they are tested, not proven
+. *Reference Implementation* — Serves as a tested semantic baseline for other language implementations
 . *Conformance Testing* — Test suite exactly matches PolyglotFormalisms specifications
 . *Cross-Language Bridge* — Enables verification that AffineScript, Gleam, Elixir implementations satisfy the same properties
 
@@ -78,7 +80,7 @@ Conditional.clamp_value(15, 0, 10)           # 10
 | `modulo(a, b)` | Remainder of division
 |===
 
-*Verified properties:* commutativity, associativity, identity, zero element, distributivity.
+*Tested properties:* commutativity, associativity, identity, zero element, distributivity.
 
 === Comparison (6 operations)
 
@@ -94,7 +96,7 @@ Conditional.clamp_value(15, 0, 10)           # 10
 | `greater_equal(a, b)` | a >= b
 |===
 
-*Verified properties:* trichotomy, transitivity, reflexivity (for `equal`, `less_equal`, `greater_equal`), antisymmetry.
+*Tested properties:* trichotomy, transitivity, reflexivity (for `equal`, `less_equal`, `greater_equal`), antisymmetry.
 
 === Logical (3 operations)
 
@@ -107,7 +109,7 @@ Conditional.clamp_value(15, 0, 10)           # 10
 | `not(a)` | Logical negation
 |===
 
-*Verified properties:* commutativity, associativity, identity, De Morgan's laws, double negation, excluded middle.
+*Tested properties:* commutativity, associativity, identity, De Morgan's laws, double negation, excluded middle.
 
 === StringOps (14 operations)
 
@@ -131,7 +133,7 @@ Conditional.clamp_value(15, 0, 10)           # 10
 | `is_empty(s)` | Check if string is empty
 |===
 
-*Verified properties:* concat associativity, concat identity, length non-negativity, split/join roundtrip, trim idempotence.
+*Tested properties:* concat associativity, concat identity, length non-negativity, split/join roundtrip, trim idempotence.
 
 === Collection (13 operations)
 
@@ -154,7 +156,7 @@ Conditional.clamp_value(15, 0, 10)           # 10
 | `all_items(pred, coll)` | True if all elements match
 |===
 
-*Verified properties:* functor identity (`map id = id`), functor composition, filter/partition consistency, fold universality, take/drop complementarity, De Morgan duality (`any`/`all`).
+*Tested properties:* functor identity (`map id = id`), functor composition, filter/partition consistency, fold universality, take/drop complementarity, De Morgan duality (`any`/`all`).
 
 === Conditional (5 operations)
 
@@ -169,7 +171,7 @@ Conditional.clamp_value(15, 0, 10)           # 10
 | `clamp_value(x, lo, hi)` | Clamp number to range [lo, hi]
 |===
 
-*Verified properties:* if_then_else totality, when/unless duality, coalesce idempotence, clamp boundary conditions, clamp idempotence within range.
+*Tested properties:* if_then_else totality, when/unless duality, coalesce idempotence, clamp boundary conditions, clamp idempotence within range.
 
 == Conformance Testing
 
@@ -203,7 +205,7 @@ julia --project=. -e 'using Pkg; Pkg.test()'
 
 == Integration with Axiom.jl
 
-When Axiom.jl is available as a dependency, formal proofs will be automatically verified at compile time:
+*Planned, not implemented.* Axiom.jl is not a dependency yet, and no `@prove` call exists in `src/`. When it is added, formal proofs are to be checked at compile time:
 
 [source,julia]
 ----
@@ -213,7 +215,7 @@ When Axiom.jl is available as a dependency, formal proofs will be automatically 
 @prove forall(a) do add(a, 0) == a end
 ----
 
-This enables:
+This would enable:
 
 * *Compile-time verification* of mathematical properties
 * *Automatic error detection* if implementations violate proven properties
@@ -221,7 +223,7 @@ This enables:
 
 == Cross-Language Verification
 
-PolyglotFormalisms.jl serves as a formally verified reference for semantic equivalence checking:
+PolyglotFormalisms.jl is intended as the reference for semantic equivalence checking. Steps 3 and 4 are planned and not implemented:
 
 . Implement in target language (AffineScript, Gleam, Elixir)
 . Run PolyglotFormalisms conformance tests in both languages
@@ -234,10 +236,10 @@ using PolyglotFormalisms
 using Axiom
 using SMTLib
 
-# Verify AffineScript implementation semantically equivalent to Julia
+# Planned API, not implemented: verify an AffineScript implementation against Julia
 verify_equivalence(
     julia_impl = Arithmetic.add,
-    rescript_impl = RescriptFFI.add,
+    affinescript_impl = AffineScriptFFI.add,
     properties = [commutativity, associativity, identity]
 )
 ----
@@ -265,7 +267,7 @@ verify_equivalence(
 * *Minimal intersection* — Only functions that work across all target languages
 * *Clear semantics* — Unambiguous behavioral specifications
 * *Testable* — Executable test cases for every operation
-* *Provable* — Mathematical properties verified with formal methods
+* *Provable* — Mathematical properties stated so that formal methods can check them (planned; tested today)
 * *Extensible* — Each ecosystem extends through its standard library
 
 == References

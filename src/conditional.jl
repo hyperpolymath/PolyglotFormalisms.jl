@@ -71,9 +71,9 @@ if_then_else: Bool, a, a -> a
 Both branches are evaluated (not lazy). This is a total function that
 always returns a value.
 
-# Mathematical Properties (Proven with Axiom.jl)
+# Mathematical Properties (tested; Axiom.jl proofs planned)
 
-When Axiom.jl is available, these properties are formally proven:
+When Axiom.jl is available, these properties are to be formally proven (today they are tested):
 
 - **Totality**: always produces a result for any Bool input
 - **True branch**: `if_then_else(true, a, b) == a`
@@ -127,7 +127,7 @@ when: Bool, a -> Option{a}
 **Returns:** `Some(val)` when predicate is true, `nothing` when predicate is false.
 Useful for optional/nullable value pipelines.
 
-# Mathematical Properties (Proven with Axiom.jl)
+# Mathematical Properties (tested; Axiom.jl proofs planned)
 
 - **True case**: `when(true, x) == Some(x)`
 - **False case**: `when(false, x) === nothing`
@@ -179,7 +179,7 @@ unless: Bool, a -> Option{a}
 **Returns:** `Some(val)` when predicate is false, `nothing` when predicate is true.
 This is the inverse of `when`.
 
-# Mathematical Properties (Proven with Axiom.jl)
+# Mathematical Properties (tested; Axiom.jl proofs planned)
 
 - **True case**: `unless(true, x) === nothing`
 - **False case**: `unless(false, x) == Some(x)`
@@ -229,7 +229,7 @@ coalesce: a?... -> a?
 **Returns:** The first value that is not `nothing`, scanning left to right.
 If all values are `nothing`, returns `nothing`.
 
-# Mathematical Properties (Proven with Axiom.jl)
+# Mathematical Properties (tested; Axiom.jl proofs planned)
 
 - **Identity**: `coalesce(x) == x` for non-nothing x
 - **Nothing absorption**: `coalesce(nothing, x) == x` for non-nothing x
@@ -287,7 +287,7 @@ clamp_value: Number, Number, Number -> Number
 **Returns:** `lo` if `x < lo`, `hi` if `x > hi`, otherwise `x`.
 Requires `lo <= hi`; throws `ArgumentError` if violated.
 
-# Mathematical Properties (Proven with Axiom.jl)
+# Mathematical Properties (tested; Axiom.jl proofs planned)
 
 - **Range proof**: `lo <= clamp_value(x, lo, hi) <= hi`
 - **Identity in range**: if `lo <= x <= hi`, then `clamp_value(x, lo, hi) == x`

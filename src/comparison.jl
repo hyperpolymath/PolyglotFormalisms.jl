@@ -60,9 +60,9 @@ less_than: Number, Number -> Boolean
 
 **Returns:** `true` if `a` is strictly less than `b`, otherwise `false`.
 
-# Mathematical Properties (Proven with Axiom.jl)
+# Mathematical Properties (tested; Axiom.jl proofs planned)
 
-When Axiom.jl is available, these properties are formally proven:
+When Axiom.jl is available, these properties are to be formally proven (today they are tested):
 
 - **Transitivity**: `∀a b c. less_than(a, b) ∧ less_than(b, c) ⟹ less_than(a, c)`
 - **Irreflexivity**: `∀a. ¬less_than(a, a)`
@@ -115,7 +115,7 @@ greater_than: Number, Number -> Boolean
 
 **Returns:** `true` if `a` is strictly greater than `b`, otherwise `false`.
 
-# Mathematical Properties (Proven with Axiom.jl)
+# Mathematical Properties (tested; Axiom.jl proofs planned)
 
 - **Transitivity**: `∀a b c. greater_than(a, b) ∧ greater_than(b, c) ⟹ greater_than(a, c)`
 - **Irreflexivity**: `∀a. ¬greater_than(a, a)`
@@ -167,7 +167,7 @@ equal: Number, Number -> Boolean
 
 **Returns:** `true` if `a` equals `b`, otherwise `false`.
 
-# Mathematical Properties (Proven with Axiom.jl)
+# Mathematical Properties (tested; Axiom.jl proofs planned)
 
 - **Reflexivity**: `∀a. equal(a, a)`
 - **Symmetry**: `∀a b. equal(a, b) ⟹ equal(b, a)`
@@ -220,7 +220,7 @@ not_equal: Number, Number -> Boolean
 
 **Returns:** `true` if `a` is not equal to `b`, otherwise `false`.
 
-# Mathematical Properties (Proven with Axiom.jl)
+# Mathematical Properties (tested; Axiom.jl proofs planned)
 
 - **Negation of equal**: `∀a b. not_equal(a, b) ⟺ ¬equal(a, b)`
 - **Irreflexivity**: `∀a. ¬not_equal(a, a)` (except NaN)
@@ -270,7 +270,7 @@ less_equal: Number, Number -> Boolean
 
 **Returns:** `true` if `a ≤ b`, otherwise `false`.
 
-# Mathematical Properties (Proven with Axiom.jl)
+# Mathematical Properties (tested; Axiom.jl proofs planned)
 
 - **Reflexivity**: `∀a. less_equal(a, a)`
 - **Transitivity**: `∀a b c. less_equal(a, b) ∧ less_equal(b, c) ⟹ less_equal(a, c)`
@@ -324,7 +324,7 @@ greater_equal: Number, Number -> Boolean
 
 **Returns:** `true` if `a ≥ b`, otherwise `false`.
 
-# Mathematical Properties (Proven with Axiom.jl)
+# Mathematical Properties (tested; Axiom.jl proofs planned)
 
 - **Reflexivity**: `∀a. greater_equal(a, a)`
 - **Transitivity**: `∀a b c. greater_equal(a, b) ∧ greater_equal(b, c) ⟹ greater_equal(a, c)`
