@@ -6,7 +6,7 @@ Logical operations from the PolyglotFormalisms Common Library specification.
 
 Each operation includes:
 - Implementation following PolyglotFormalisms behavioral semantics
-- Formal proofs of mathematical properties
+- Mathematical properties covered by tests (formal proofs planned)
 - Documentation matching PolyglotFormalisms specs
 
 # Operations
@@ -25,7 +25,7 @@ Logical.and(true, false)   # Returns false
 Logical.or(true, false)    # Returns true
 Logical.not(true)          # Returns false
 
-# All operations have proven properties
+# All operations have tested properties (formal proofs planned)
 # For and:
 #   - Commutativity: and(a, b) == and(b, a)
 #   - Associativity: and(and(a, b), c) == and(a, and(b, c))
@@ -38,7 +38,7 @@ module Logical
 export and, or, not
 
 # Note: Formal proofs with @prove will be added when Axiom.jl is available as a dependency
-# For now, we document the proven properties and will integrate Axiom in a future version
+# For now, we document the tested properties and will integrate Axiom in a future version
 
 """
     and(a::Bool, b::Bool) -> Bool

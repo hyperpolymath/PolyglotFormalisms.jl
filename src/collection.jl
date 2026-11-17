@@ -49,7 +49,7 @@ This implementation follows the PolyglotFormalisms specification format:
 - Minimal intersection across 7+ radically different languages
 - Clear behavioral semantics
 - Executable test cases
-- Mathematical properties proven with Axiom.jl
+- Mathematical properties tested (Axiom.jl proofs planned)
 """
 module Collection
 
@@ -58,7 +58,7 @@ export group_by, sort_by, unique_items, partition_items
 export take_items, drop_items, any_item, all_items
 
 # Note: Formal proofs with @prove will be added when Axiom.jl is available as a dependency
-# For now, we document the proven properties and will integrate Axiom in a future version
+# For now, we document the tested properties and will integrate Axiom in a future version
 
 """
     map_items(f, collection::AbstractVector) -> Vector

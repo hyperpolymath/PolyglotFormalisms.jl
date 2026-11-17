@@ -6,7 +6,7 @@ Comparison operations from the PolyglotFormalisms Common Library specification.
 
 Each operation includes:
 - Implementation following PolyglotFormalisms behavioral semantics
-- Formal proofs of mathematical properties
+- Mathematical properties covered by tests (formal proofs planned)
 - Documentation matching PolyglotFormalisms specs
 
 # Operations
@@ -28,7 +28,7 @@ Comparison.less_than(2, 3)        # Returns true
 Comparison.equal(5, 5)            # Returns true
 Comparison.greater_equal(10, 3)   # Returns true
 
-# All operations have proven properties
+# All operations have tested properties (formal proofs planned)
 # For less_than:
 #   - Transitivity: less_than(a, b) ∧ less_than(b, c) ⟹ less_than(a, c)
 #   - Irreflexivity: ¬less_than(a, a)
@@ -40,7 +40,7 @@ module Comparison
 export less_than, greater_than, equal, not_equal, less_equal, greater_equal
 
 # Note: Formal proofs with @prove will be added when Axiom.jl is available as a dependency
-# For now, we document the proven properties and will integrate Axiom in a future version
+# For now, we document the tested properties and will integrate Axiom in a future version
 
 """
     less_than(a::Number, b::Number) -> Bool

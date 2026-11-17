@@ -2,7 +2,7 @@
 """
     Conditional
 
-Cross-language conditional operations with formally verified properties.
+Cross-language conditional operations with tested properties (formal proofs planned).
 Part of the PolyglotFormalisms common library specification.
 
 Provides fundamental conditional operations that maintain consistent
@@ -28,7 +28,7 @@ Conditional.when(true, 42)                  # Returns Some(42)
 Conditional.coalesce(nothing, nothing, 3)   # Returns 3
 Conditional.clamp_value(15, 0, 10)          # Returns 10
 
-# All operations have proven properties
+# All operations have tested properties (formal proofs planned)
 # For if_then_else:
 #   - True branch: if_then_else(true, a, b) == a
 #   - False branch: if_then_else(false, a, b) == b
@@ -41,14 +41,14 @@ This implementation follows the PolyglotFormalisms specification format:
 - Minimal intersection across 7+ radically different languages
 - Clear behavioral semantics
 - Executable test cases
-- Mathematical properties proven with Axiom.jl
+- Mathematical properties tested (Axiom.jl proofs planned)
 """
 module Conditional
 
 export if_then_else, when, unless, coalesce, clamp_value
 
 # Note: Formal proofs with @prove will be added when Axiom.jl is available as a dependency
-# For now, we document the proven properties and will integrate Axiom in a future version
+# For now, we document the tested properties and will integrate Axiom in a future version
 
 """
     if_then_else(pred::Bool, then_val, else_val)
@@ -289,7 +289,7 @@ Requires `lo <= hi`; throws `ArgumentError` if violated.
 
 # Mathematical Properties (tested; Axiom.jl proofs planned)
 
-- **Range proof**: `lo <= clamp_value(x, lo, hi) <= hi`
+- **Range**: `lo <= clamp_value(x, lo, hi) <= hi`
 - **Identity in range**: if `lo <= x <= hi`, then `clamp_value(x, lo, hi) == x`
 - **Idempotence**: `clamp_value(clamp_value(x, lo, hi), lo, hi) == clamp_value(x, lo, hi)`
 - **Monotonicity**: if `x1 <= x2`, then `clamp_value(x1, lo, hi) <= clamp_value(x2, lo, hi)`

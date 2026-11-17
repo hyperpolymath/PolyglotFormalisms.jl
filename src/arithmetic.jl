@@ -6,7 +6,7 @@ Arithmetic operations from the aLib Common Library specification.
 
 Each operation includes:
 - Implementation following aLib behavioral semantics
-- Formal proofs of mathematical properties
+- Mathematical properties covered by tests (formal proofs planned)
 - Documentation matching aLib specs
 
 # Operations
@@ -39,7 +39,7 @@ module Arithmetic
 export add, subtract, multiply, divide, modulo
 
 # Note: Formal proofs with @prove will be added when Axiom.jl is available as a dependency
-# For now, we document the proven properties and will integrate Axiom in a future version
+# For now, we document the tested properties and will integrate Axiom in a future version
 
 """
     add(a::Number, b::Number) -> Number
