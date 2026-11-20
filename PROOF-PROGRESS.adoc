@@ -12,7 +12,7 @@ This document provides an indicative state of progress on formal guarantees for
 the PolyglotFormalisms.jl Julia package as of 2026-08-14. It consolidates information from:
 
 - `README.adoc` — Project overview and formal verification claims
-- `src/` — Module implementations with verified properties
+- `src/` — Module implementations with tested properties
 - `test/` — Conformance test suite (422 passing tests)
 
 == Headline Status
@@ -27,17 +27,17 @@ the PolyglotFormalisms.jl Julia package as of 2026-08-14. It consolidates inform
 
 | Conformance testing | ✅ COMPLETE | 422 passing tests matching PolyglotFormalisms specification
 
-| Arithmetic module | ✅ COMPLETE | 5 operations with commutativity, associativity, identity proofs
+| Arithmetic module | ✅ COMPLETE | 5 operations; commutativity, associativity, identity tested
 
-| Comparison module | ✅ COMPLETE | 6 operations with trichotomy, transitivity, reflexivity proofs
+| Comparison module | ✅ COMPLETE | 6 operations; trichotomy, transitivity, reflexivity tested
 
-| Logical module | ✅ COMPLETE | 3 operations with commutativity, associativity, De Morgan's laws
+| Logical module | ✅ COMPLETE | 3 operations; commutativity, associativity, De Morgan's laws tested
 
 | StringOps module | ✅ COMPLETE | 14 operations with concat, length, split/join properties
 
 | Collection module | ✅ COMPLETE | 13 operations with functor laws, fold universality
 
-| Conditional module | ✅ COMPLETE | 5 operations with totality, duality, idempotence proofs
+| Conditional module | ✅ COMPLETE | 5 operations; totality, duality, idempotence tested
 
 | Axiom.jl integration | 🟡 PLANNED | `@prove` macro integration for compile-time verification
 
@@ -46,7 +46,7 @@ the PolyglotFormalisms.jl Julia package as of 2026-08-14. It consolidates inform
 | Formal certificates | 🟡 PLANNED | Compile-time verification certificates for safety-critical applications
 |===
 
-**Overall:** PolyglotFormalisms.jl serves as the **formally verified reference implementation**
+**Overall:** PolyglotFormalisms.jl serves as the **tested reference implementation** (formal verification planned; 0 properties proven)
 for the aggregate-library's minimal intersection of functionality across programming languages.
 Currently, all 6 modules are complete with 56 operations and 422 passing conformance tests.
 Formal proof integration via Axiom.jl is planned, with `@prove` macros to verify mathematical
@@ -62,8 +62,8 @@ This provides a **common semantic baseline** for cross-language verification.
 
 Key design principles:
 
-. *Formal Verification* — Mathematical properties proven using Axiom.jl's `@prove` macro (planned)
-. *Reference Implementation* — Serves as semantically verified baseline for other languages
+. *Formal Verification (planned)* — Mathematical properties to be proven with Axiom.jl's `@prove` macro; tested today
+. *Reference Implementation* — Serves as a tested semantic baseline for other languages
 . *Conformance Testing* — Test suite exactly matches PolyglotFormalisms specifications
 . *Cross-Language Bridge* — Enables verification that , Gleam, Elixir implementations satisfy same properties
 
@@ -71,7 +71,7 @@ Key design principles:
 
 [cols="1,1,1,2",options="header"]
 |===
-| Module | Operations | Status | Verified Properties
+| Module | Operations | Status | Tested Properties
 
 | Arithmetic | 5 | Complete | Commutativity, associativity, identity, zero element, distributivity
 
@@ -254,7 +254,7 @@ This enables:
 
 == Cross-Language Verification (Planned)
 
-PolyglotFormalisms.jl serves as a formally verified reference for semantic equivalence checking:
+PolyglotFormalisms.jl is intended as the reference for semantic equivalence checking (planned; not implemented):
 
 [source,julia]
 ----
@@ -293,14 +293,14 @@ Verification workflow:
 
 | Cross-language targets | , Gleam, Elixir | 3
 
-| Completion percentage | All modules complete | 100%
+| Modules complete | Implemented modules | 6 of 6
 |===
 
 == Outstanding Work
 
 === Immediate Next Steps
 
-1. **Axiom.jl Integration**: Add Axiom.jl as a dependency and implement `@prove` macros for all verified properties
+1. **Axiom.jl Integration**: Add Axiom.jl as a dependency and implement `@prove` macros for all tested properties
 2. **Compile-time verification**: Enable automatic proof checking at package load time
 3. **Formal certificates**: Generate and store verification certificates for each proven property
 

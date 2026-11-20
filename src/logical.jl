@@ -6,7 +6,7 @@ Logical operations from the PolyglotFormalisms Common Library specification.
 
 Each operation includes:
 - Implementation following PolyglotFormalisms behavioral semantics
-- Formal proofs of mathematical properties
+- Mathematical properties covered by tests (formal proofs planned)
 - Documentation matching PolyglotFormalisms specs
 
 # Operations
@@ -25,7 +25,7 @@ Logical.and(true, false)   # Returns false
 Logical.or(true, false)    # Returns true
 Logical.not(true)          # Returns false
 
-# All operations have proven properties
+# All operations have tested properties (formal proofs planned)
 # For and:
 #   - Commutativity: and(a, b) == and(b, a)
 #   - Associativity: and(and(a, b), c) == and(a, and(b, c))
@@ -38,7 +38,7 @@ module Logical
 export and, or, not
 
 # Note: Formal proofs with @prove will be added when Axiom.jl is available as a dependency
-# For now, we document the proven properties and will integrate Axiom in a future version
+# For now, we document the tested properties and will integrate Axiom in a future version
 
 """
     and(a::Bool, b::Bool) -> Bool
@@ -67,9 +67,9 @@ and: Boolean, Boolean -> Boolean
 | false | true  | false     |
 | false | false | false     |
 
-# Mathematical Properties (Proven with Axiom.jl)
+# Mathematical Properties (tested; Axiom.jl proofs planned)
 
-When Axiom.jl is available, these properties are formally proven:
+When Axiom.jl is available, these properties are to be formally proven (today they are tested):
 
 - **Commutativity**: `∀a b. and(a, b) == and(b, a)`
 - **Associativity**: `∀a b c. and(and(a, b), c) == and(a, and(b, c))`
@@ -133,7 +133,7 @@ or: Boolean, Boolean -> Boolean
 | false | true  | true     |
 | false | false | false    |
 
-# Mathematical Properties (Proven with Axiom.jl)
+# Mathematical Properties (tested; Axiom.jl proofs planned)
 
 - **Commutativity**: `∀a b. or(a, b) == or(b, a)`
 - **Associativity**: `∀a b c. or(or(a, b), c) == or(a, or(b, c))`
@@ -193,7 +193,7 @@ not: Boolean -> Boolean
 | true  | false  |
 | false | true   |
 
-# Mathematical Properties (Proven with Axiom.jl)
+# Mathematical Properties (tested; Axiom.jl proofs planned)
 
 - **Involution** (double negation): `∀a. not(not(a)) == a`
 - **Excluded middle**: `∀a. or(a, not(a)) == true`

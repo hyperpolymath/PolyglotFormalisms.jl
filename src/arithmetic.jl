@@ -6,7 +6,7 @@ Arithmetic operations from the aLib Common Library specification.
 
 Each operation includes:
 - Implementation following aLib behavioral semantics
-- Formal proofs of mathematical properties
+- Mathematical properties covered by tests (formal proofs planned)
 - Documentation matching aLib specs
 
 # Operations
@@ -39,7 +39,7 @@ module Arithmetic
 export add, subtract, multiply, divide, modulo
 
 # Note: Formal proofs with @prove will be added when Axiom.jl is available as a dependency
-# For now, we document the proven properties and will integrate Axiom in a future version
+# For now, we document the tested properties and will integrate Axiom in a future version
 
 """
     add(a::Number, b::Number) -> Number
@@ -59,9 +59,9 @@ add: Number, Number -> Number
 
 **Returns:** The arithmetic sum of `a` and `b`.
 
-# Mathematical Properties (Proven with Axiom.jl)
+# Mathematical Properties (tested; Axiom.jl proofs planned)
 
-When Axiom.jl is available, these properties are formally proven:
+When Axiom.jl is available, these properties are to be formally proven (today they are tested):
 
 - **Commutativity**: `∀a b. add(a, b) == add(b, a)`
 - **Associativity**: `∀a b c. add(add(a, b), c) == add(a, add(b, c))`
@@ -112,7 +112,7 @@ subtract: Number, Number -> Number
 
 **Returns:** The arithmetic difference `a - b`.
 
-# Mathematical Properties (Proven with Axiom.jl)
+# Mathematical Properties (tested; Axiom.jl proofs planned)
 
 - **Non-commutative**: `∀a b. subtract(a, b) ≠ subtract(b, a)` (except when a == b)
 - **Identity element**: `∀a. subtract(a, 0) == a`
@@ -156,7 +156,7 @@ multiply: Number, Number -> Number
 
 **Returns:** The arithmetic product of `a` and `b`.
 
-# Mathematical Properties (Proven with Axiom.jl)
+# Mathematical Properties (tested; Axiom.jl proofs planned)
 
 - **Commutativity**: `∀a b. multiply(a, b) == multiply(b, a)`
 - **Associativity**: `∀a b c. multiply(multiply(a, b), c) == multiply(a, multiply(b, c))`
@@ -205,7 +205,7 @@ divide: Number, Number -> Number
 
 **Returns:** The arithmetic quotient `a / b`.
 
-# Mathematical Properties (Proven with Axiom.jl)
+# Mathematical Properties (tested; Axiom.jl proofs planned)
 
 - **Non-commutative**: `∀a b. divide(a, b) ≠ divide(b, a)` (except when a == b)
 - **Identity element**: `∀a. divide(a, 1) == a`
@@ -254,7 +254,7 @@ modulo: Number, Number -> Number
 
 **Returns:** The remainder of `a / b`.
 
-# Mathematical Properties (Proven with Axiom.jl)
+# Mathematical Properties (tested; Axiom.jl proofs planned)
 
 - **Range constraint**: `∀a b. (b > 0) ⟹ (0 ≤ modulo(a, b) < b)`
 - **Division relation**: `∀a b. (b ≠ 0) ⟹ (a == add(multiply(div(a,b), b), modulo(a, b)))`

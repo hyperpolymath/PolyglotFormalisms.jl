@@ -6,21 +6,21 @@
 
 The README makes claims. This file backs them up with code paths and tested invariants.
 
-== Claim 1: Formally Verified Cross-Language Reference Implementation
+== Claim 1: Tested Cross-Language Reference Implementation (formal verification planned)
 
 From README:
 ____
-PolyglotFormalisms.jl provides formally verified implementations of the minimal overlap functions specified in the aggregate-library project. This package serves as a Julia reference implementation for cross-language semantic equivalence verification.
+PolyglotFormalisms.jl provides tested reference implementations of the minimal overlap functions specified in the aggregate-library project. This package serves as a Julia reference implementation for cross-language semantic equivalence verification.
 ____
 
-**How it's proven:**
+**How it is tested** (status `tested-only`, standards PROOF-POLICY §5; nothing here is proven):
 - **Source**: `src/PolyglotFormalisms.jl` exports 6 complete module namespaces: `Arithmetic`, `Comparison`, `Logical`, `StringOps`, `Collection`, `Conditional`
 - **Coverage**: 46 total functions implemented (5 arithmetic, 6 comparison, 3 logical, 14 string, 13 collection, 5 conditional)
 - **Test suite**: 422 passing tests across `test/arithmetic_tests.jl`, `test/comparison_tests.jl`, `test/string_tests.jl`, `test/collection_tests.jl`, `test/conditional_tests.jl`, `test/logical_tests.jl`
 - **Key path**: Each module includes `@testset` blocks verifying commutativity, associativity, identity, and distributivity laws specific to that algebra
 - **Example verification**: `src/arithmetic.jl` implements `add(a,b)`, `subtract(a,b)`, `multiply(a,b)`, `divide(a,b)`, `modulo(a,b)` with identical semantics to aggregate-library spec
 
-**Caveat:** Axiom.jl formal proof integration (mentioned in README as "planned") is NOT yet implemented. Mathematical properties are currently tested, not proven at compile-time.
+**Caveat:** Axiom.jl formal proof integration is planned and NOT yet implemented: Axiom.jl is not in `Project.toml`, and the `@prove` lines in `src/` are comments. Mathematical properties are tested, not proven.
 
 == Claim 2: Backend Abstraction via AcceleratorGate Coprocessor Dispatch
 
@@ -29,7 +29,7 @@ ____
 Layer 1: Verified Primitives (FFI). Layer 2: Protocols (Pure Julia). Layer 3: Post-Quantum (Pure Julia + Verification).
 ____
 
-**How it's proven:**
+**Evidence:**
 - **Dispatch framework**: `src/PolyglotFormalisms.jl` includes 9 coprocessor backend files: `backends/abstract.jl` (core interface), `coprocessors/tpu.jl`, `coprocessors/npu.jl`, `coprocessors/fpga.jl`, `coprocessors/vpu.jl`, `coprocessors/qpu.jl`, `coprocessors/dsp.jl`, `coprocessors/ppu.jl`, `coprocessors/math.jl`, `coprocessors/crypto.jl`
 - **Critical path**: All 6 modules execute through this dispatch layer (no hardcoded CPU-only code paths)
 - **Testability**: Core algorithms in pure Julia (`src/collection.jl` 23KB, `src/string.jl` 11KB, `src/arithmetic.jl` 7KB) are decoupled from hardware acceleration—can test without accelerators present
